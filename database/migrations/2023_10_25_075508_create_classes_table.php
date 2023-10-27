@@ -19,7 +19,7 @@ class CreateClassesTable extends Migration
             $table->date('begin_date');
             $table->date('end_date');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('class_subject_id');
+            // $table->unsignedBigInteger('class_subject_id');
             $table->softDeletes();
             $table->timestamps();
             });

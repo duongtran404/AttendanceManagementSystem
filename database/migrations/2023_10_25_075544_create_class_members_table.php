@@ -16,7 +16,7 @@ class CreateClassMembersTable extends Migration
         Schema::create('class_members', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('class_subject_id');
             $table->string('notes')->nullable();
             $table->timestamps();
         });
