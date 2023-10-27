@@ -17,7 +17,7 @@ class CreateLessonsTable extends Migration
             $table->id();
             $table->dateTime('begin_time');
             $table->unsignedBigInteger('location_id');
-            $table->unsignedBigInteger('class_member_id');
+            $table->unsignedBigInteger('class_id');
             $table->softDeletes();
             $table->timestamps();
 
