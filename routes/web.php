@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\lessonController;
 use App\Http\Controllers\StudentController;
+
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 
@@ -45,6 +46,10 @@ Route::post('/student/update/{id}',[StudentController::class, 'update'])->name('
 Route::delete('/student/destroy/{id}',[StudentController::class,'destroy'])->name('deleteStudent');
 
 Route::get('/student/archive',[StudentController::class, 'archive'])->name('archiveStudent');
+
+Route::delete('/student/archive/delete/{id}',[StudentController::class,'hard_delete'])->name('hard-delete-student');
+
+Route::get('/student/archive/restore/{id}',[StudentController::class,'restore'])->name('restore-student');
 
 Route::get('/lesson',[LessonController::class,'index'])->name('lesson');
 

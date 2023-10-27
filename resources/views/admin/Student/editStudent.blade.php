@@ -64,11 +64,11 @@
             <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">
         </div>
 
-        {{-- <form action="" method="GET">
-    @csrf
-    @method('delete')
-    <button class="btn btn-primary mt-1" type="submit">delete</button>
-</form> --}}
+        {{-- <form action="{{ route('deleteStudent', [$students->id]) }}" method="POST">
+            @csrf
+                @method('DELETE') 
+            <button class="btn btn-primary mt-1" type="submit">delete</button>
+        </form> --}}
 
     </form>
 @endsection
