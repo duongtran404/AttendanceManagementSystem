@@ -27,16 +27,12 @@
                         <td>{{ $item->end_date }}</td>
 
                         <td>
-                            <a class="btn btn-primary" href="{{ route('createLesson', [$item->class_subject->subject->id]) }}">new lesson</a>
-                            <a class="btn btn-primary" href="{{ route('editLesson', [$item->id]) }}"> Edit</a>
-                            <a class="btn btn-primary" href="">Delete</a>
+                            <a class="btn btn-primary" href="{{ route('createLesson', [$item->id]) }}">new lesson</a>
+                            {{-- <a class="btn btn-primary" href="{{ route('editLesson', [$item->id]) }}"> Edit</a> --}}
+                            {{-- <a class="btn btn-primary" href="">Delete</a> --}}
                             <a class="btn btn-primary" href="{{ route('lesson',[$item->id]) }}">About</a>
                         </td>
-                        {{-- <td>
-                            <form action="{{ route('lesson',[$item->id]) }}" method="get">
-                            <button type="submit" class="btn btn-primary">about</button>
-                        </form> 
-                        </td> --}}
+
                     </tr>
                 @endforeach
             </table>

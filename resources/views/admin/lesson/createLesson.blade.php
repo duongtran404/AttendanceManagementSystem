@@ -1,10 +1,10 @@
 @extends('layout.layout')
 
 @section('content')
-<form class="form mt-5" action="{{ route('insertLesson',['id' => $lessons->class_id]) }}" method="post">
+<form class="form mt-5" action="{{ route('insertLesson',[$id]) }}" method="post">
     @csrf
-    <h1 class="text-center text-dark">{{ $lessons->class->name }}</h1>
-    <h3 class="text-center text-dark">{{ $lessons->class->class_subject->subject->name }}</h3>
+    <h1 class="text-center text-dark">{{ $classes->name }}</h1>
+    <h3 class="text-center text-dark">{{ $classes->class_subject->subject->name }}</h3>
     <div class="form-group mt-3">
         <label for="begin_time" class="text-dark">Begin time: </label><br>
         <input type="datetime-local" name="begin_time" id="begin_time" class="form-control" >

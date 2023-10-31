@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLessonsTable extends Migration
+class AddsSoftDeletesToLessonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateLessonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
-            $table->id();
-            $table->dateTime('begin_time');
-            $table->unsignedBigInteger('class_id');
-            $table->unsignedBigInteger('location_id');
-            $table->timestamps();
-
+        Schema::table('lessons', function (Blueprint $table) {
+            //
+            $table->softDeletes();
         });
-
     }
 
     /**
@@ -31,6 +26,9 @@ class CreateLessonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::table('lessons', function (Blueprint $table) {
+            //
+            $table->dropSoftDeletes();
+        });
     }
 }

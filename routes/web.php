@@ -36,9 +36,9 @@ Route::post('/',[AuthController::class, 'authenticate']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/student',[StudentController::class,'index'])->name('student');
 
-// Route::get('/student/create',[StudentController::class,'create'])->name('createStudent');
+
+Route::get('/student',[StudentController::class,'index'])->name('student');
 
 Route::get('/student/edit/{id}',[StudentController::class,'show'])->name('editStudent');
 
@@ -52,6 +52,8 @@ Route::delete('/student/archive/delete/{id}',[StudentController::class,'hard_del
 
 Route::get('/student/archive/restore/{id}',[StudentController::class,'restore'])->name('restore-student');
 
+
+
 Route::get('lesson/{id}',[LessonController::class,'index'])->name('lesson');
 
 Route::get('/lesson/create/{id}',[LessonController::class,'create'])->name('createLesson');
@@ -60,7 +62,17 @@ Route::post('/lesson/insert/{id}',[LessonController::class,'store'])->name('inse
 
 Route::get('/lesson/edit/{id}',[LessonController::class,'show'])->name('editLesson');
 
-// Route::post('/lesson/update/{id}',[LessonController::class,'update'])->name('updateLesson');
+Route::post('/lesson/update/{id}',[LessonController::class,'update'])->name('updateLesson');
+
+Route::delete('/lesson/destroy/{id}',[lessonController::class,'destroy'])->name('deleteLesson');
+
+Route::get('/lesson/archive/{id}',[lessonController::class, 'archive'])->name('archiveLesson');
+
+Route::delete('/lesson/archive/delete/{id}',[LessonController::class,'hard_delete'])->name('hard-delete-lesson');
+
+Route::get('/lesson/archive/restore/{id}',[LessonController::class,'restore'])->name('restore-lesson');
+
+
 
 
 Route::get('/attendance',[AttendanceController::class,'index'])->name('attendance');

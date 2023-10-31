@@ -4,6 +4,7 @@
     <form class="d-flex " role="search" action="" method="">
         <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
+        <a class="btn btn-primary" href="{{ route("archiveLesson",[$id]) }}">archive</a>
     </form>
     <div>
         <table class="table">
@@ -29,13 +30,13 @@
                         {{ $item->location->address }}
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('editLesson', ['id' => $item->id]) }}"> Edit</a>
+                        <a class="btn btn-primary" href="{{ route('editLesson', [$item->id]) }}"> Edit</a>
 
                     </td>
                     <td>
-                        <form action="" method="GET">
+                        <form action="{{ route('deleteLesson',[$item->id]) }}" method="POST">
                             @csrf
-                            @method('delete')
+                            @method('DELETE')
                             <button class="btn btn-primary" type="submit">Delete</button>
                         </form>
                     </td>

@@ -74,7 +74,7 @@ class StudentController extends Controller
         if($student){
             $student->restore();
             // dd($student);
-            return redirect()->route("archiveStudent")->with("success","hard delete is successfull");
+            return redirect()->route("archiveStudent")->with("success","restore is successfull");
         }else{
             return redirect()->route("archiveStudent")->with("success","not found");
         }
