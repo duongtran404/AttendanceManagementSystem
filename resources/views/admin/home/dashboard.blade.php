@@ -27,7 +27,7 @@
                 <td>room 1</td>
                 <td>datphan</td>
                 <td>
-                    <a href="/attendance" class="btn btn-primary " role="button" aria-disabled="true">Attendance</a>
+                    <a href="{{ route('attendance') }}" class="btn btn-primary " role="button" aria-disabled="true">Attendance</a>
                 </td>
             </tr>
         </table>

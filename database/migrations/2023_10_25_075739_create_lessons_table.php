@@ -16,8 +16,8 @@ class CreateLessonsTable extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->dateTime('begin_time');
-            $table->unsignedBigInteger('location_id');
             $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('location_id');
             $table->softDeletes();
             $table->timestamps();
 

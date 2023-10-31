@@ -1,37 +1,51 @@
 @extends('layout.layout')
 @section('content')
-    <h1>LESSON MANAGEMENT</h1>
+    <h1></h1>
     <form class="d-flex " role="search" action="" method="">
         <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-
-    <form action="">
-        <a href="{{ route('createLesson') }}" class="btn btn-primary mt-3" role="button" aria-disabled="true">New
-            lesson</a>
-        <div>
-            <table class="table">
+    <div>
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Class name</th>
+                <th>Subject</th>
+                <th>Teacher</th>
+                <th>Time Begin</th>
+                <th>Location</th>
+                <th></th>
+                <th>Option</th>
+                <th></th>
+            </tr>
+            @foreach ($lessons as $item)
                 <tr>
-                    <th>##</th>
-                    <th>Subject</th>
-                    <th>Time begin</th>
-                    <th>Location</th>
-                    <th>Teacher</th>
-                    <th>CRUD</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Laravel</td>
-                    <td>10:30 25/10/2023</td>
-                    <td>Room 1</td>
-                    <td>hoapc</td>
+                    <td></td>
+                    <td>{{ $item->class->name }}</td>
+                    <td>{{ $item->class->class_subject->subject->name }}</td>
+                    <td>{{ $item->class->user->name }}</td>
+                    <td>{{ $item->begin_time }}</td>
+                    <td>{{ $item->location->name }}, 
+                        {{ $item->location->address }}
+                    </td>
                     <td>
-                        <form action="{{ route('editLesson') }}" method="get">
-                            <button class="btn btn-primary" type="submit">Edit</button>
+                        <a class="btn btn-primary" href="{{ route('editLesson', ['id' => $item->id]) }}"> Edit</a>
+
+                    </td>
+                    <td>
+                        <form action="" method="GET">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-primary" type="submit">Delete</button>
                         </form>
                     </td>
+                    <td>
+                        <a href="{{ route('attendance') }}" class="btn btn-primary " role="button"
+                            aria-disabled="true">Attendance</a>
+                    </td>
                 </tr>
-            </table>
-        </div>
-    </form>
+            @endforeach
+
+        </table>
+    </div>
 @endsection

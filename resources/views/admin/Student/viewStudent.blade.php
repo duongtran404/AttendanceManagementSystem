@@ -37,7 +37,6 @@
                             <button class="btn btn-primary" type="submit">Edit</button>
                         </form>
                     </td>
-                    {{-- <a class="btn btn-primary" href="{{ route('deleteStudent', [$item->id]) }}">Delete</a> --}}
                     <td>
                         <form action="{{ route('deleteStudent', [$item->id]) }}" method="POST">
                             @csrf

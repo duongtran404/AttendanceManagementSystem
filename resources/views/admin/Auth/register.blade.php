@@ -87,7 +87,7 @@
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="title">
                             <option selected></option>
                             <option value="lecturer">lecturer</option>
-                            <option value="associate professor">associate</option>
+                            <option value="associate professor">associate professor</option>
                             <option value="professor">professor</option>
                         </select>
                     </div>

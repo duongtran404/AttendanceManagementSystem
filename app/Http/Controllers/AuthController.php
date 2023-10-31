@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\User;
 use App\Model\Users;
-use App\User;
-// use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
+// use App\Http\Controllers\Auth;
 
 class AuthController extends Controller
 {
     public $users;
     public function __construct(){
-        $this->users = new Users();
+        $this->users = new User();
     }
     public function register(){
         return view('admin.auth.register');
@@ -35,33 +35,18 @@ class AuthController extends Controller
 
         // dd($validated);
         User::create([
-            'name'=> $validated['name'],
-            'email'=> $validated['email'],
-            'password'=> Hash::make($validated['password']),
-            'role'=> $validated['role'],
-            'location'=> $validated['location'],
-            'gerden'=> $validated['gerden'],
-            'phone_number'=> $validated['phone_number'],
-            'department'=> $validated['department'],
-            'status'=> $validated['status'],
-            'title'=> $validated['title'],
-            'notes'=> $validated['notes'],
+            'name'              => $validated['name'],
+            'email'             => $validated['email'],
+            'password'          => Hash::make($validated['password']),
+            'role'              => $validated['role'],
+            'location'          => $validated['location'],
+            'gerden'            => $validated['gerden'],
+            'phone_number'      => $validated['phone_number'],
+            'department'        => $validated['department'],
+            'status'            => $validated['status'],
+            'title'             => $validated['title'],
+            'notes'             => $validated['notes'],
         ]);
-
-        // $dataInsert = [
-        //     $request->name,
-        //     $request->email,
-        //     Hash::make($request->password),
-        //     $request->role,
-        //     $request->phone_number,
-        //     $request->location,
-        //     $request->department,
-        //     $request->status,
-        //     $request->title,
-        //     $request->notes,
-        // ];
-
-        // $this->users->addUser($dataInsert);
 
 
         return redirect()->route('login')->with('status','Register is successfully');

@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -38,4 +37,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function class(){
+        return $this->hasMany(Class_::class,'user_id','id');
+    }
+    
+    public function member(){
+        return $this->hasMany(Class_member::class,'user_id','id');
+    }
 }

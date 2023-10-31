@@ -19,10 +19,10 @@
                 @endguest
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/student">Students</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('student') }}">Students</a>
                     </li>
                     <li class="nav_item">
-                        <a class="nav-link active" aria-current="page" href="/lesson">Lessons</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('class') }}">Class</a>
                     </li>            
                     {{-- <li class="nav_item">
                         <a class="nav-link active" aria-current="page" href="">Classes</a>

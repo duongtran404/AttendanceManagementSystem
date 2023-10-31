@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClassController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\lessonController;
@@ -51,17 +52,24 @@ Route::delete('/student/archive/delete/{id}',[StudentController::class,'hard_del
 
 Route::get('/student/archive/restore/{id}',[StudentController::class,'restore'])->name('restore-student');
 
-Route::get('/lesson',[LessonController::class,'index'])->name('lesson');
+Route::get('lesson/{id}',[LessonController::class,'index'])->name('lesson');
 
-Route::get('/lesson/create',[LessonController::class,'create'])->name('createLesson');
+Route::get('/lesson/create/{id}',[LessonController::class,'create'])->name('createLesson');
 
-Route::get('/lesson/edit',[LessonController::class,'show'])->name('editLesson');
+Route::post('/lesson/insert/{id}',[LessonController::class,'store'])->name('insertLesson');
+
+Route::get('/lesson/edit/{id}',[LessonController::class,'show'])->name('editLesson');
+
+// Route::post('/lesson/update/{id}',[LessonController::class,'update'])->name('updateLesson');
+
 
 Route::get('/attendance',[AttendanceController::class,'index'])->name('attendance');
 
-Route::get('/attendance/list',[AttendanceController::class,'indexattendance'])->name('listAttendance');
+Route::get('/lesson/attendance/list',[AttendanceController::class,'indexattendance'])->name('listAttendance');
 
-Route::get('/attendance/show',[AttendanceController::class, 'show'])->name('showAttendance');
+Route::get('/lesson/attendance/show',[AttendanceController::class, 'show'])->name('showAttendance');
+
+Route::get('/class',[ClassController::class,'index'])->name('class');
 
 // Route::prefix('admin')->group(function () {
 //     Route::get('admin/dashboard',[DashboardController::class, 'index'])->name('dashboard');

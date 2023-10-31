@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Model\User;
 use App\Models\Students;
-use App\User;
-use Psy\VersionUpdater\Checker;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
