@@ -11,7 +11,7 @@ class Class_member extends Model
     ] ;
 
     public function user(){
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(Users::class, 'user_id', 'id');
     }
     public function class(){
         return $this->belongsTo(Class_::class, "class_id", "id");

@@ -16,7 +16,7 @@ class CreateAttendancesTable extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->enum('status', ['present','absent','late']);
+            $table->string('status');
             $table->string('notes')->nullable();
             $table->unsignedBigInteger('lesson_id');
             $table->timestamps();
