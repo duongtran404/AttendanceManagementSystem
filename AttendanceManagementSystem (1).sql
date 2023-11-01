@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th10 31, 2023 lúc 02:53 AM
+-- Thời gian đã tạo: Th10 01, 2023 lúc 05:46 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 7.4.33
 
@@ -60,7 +60,9 @@ CREATE TABLE `classes` (
 
 INSERT INTO `classes` (`id`, `name`, `begin_date`, `end_date`, `user_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 'riki1 tieng nhat ', '2023-10-27', '2023-11-27', 7, NULL, NULL, NULL),
-(2, 'riki2 tieng anh', '2023-10-27', '2023-11-27', 8, NULL, NULL, NULL);
+(2, 'riki2 tieng anh', '2023-10-27', '2023-11-27', 8, NULL, NULL, NULL),
+(3, 'lap trinh laravel', '2023-10-31', '2023-12-31', 8, NULL, NULL, NULL),
+(4, 'lap trinh laravel 10', '2023-10-31', '2023-11-30', 8, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -112,7 +114,9 @@ CREATE TABLE `class_subjects` (
 
 INSERT INTO `class_subjects` (`id`, `class_id`, `subject_id`, `notes`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, NULL, NULL),
-(2, 2, 2, NULL, NULL, NULL);
+(2, 2, 2, NULL, NULL, NULL),
+(3, 3, 3, NULL, '2023-10-31 06:37:23', NULL),
+(4, 4, 3, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -139,44 +143,21 @@ CREATE TABLE `lessons` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `begin_time` datetime NOT NULL,
   `class_id` bigint(20) UNSIGNED NOT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
+  `location_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `lessons`
 --
 
-INSERT INTO `lessons` (`id`, `begin_time`, `class_id`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, '2023-10-31 02:14:46', 1, NULL, NULL, NULL),
-(2, '2023-10-31 02:14:46', 2, NULL, NULL, NULL),
-(3, '2023-10-31 02:14:46', 1, NULL, NULL, NULL),
-(4, '2023-10-31 02:14:46', 2, NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `lesson_locations`
---
-
-CREATE TABLE `lesson_locations` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `location_id` bigint(20) UNSIGNED NOT NULL,
-  `lesson_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `lesson_locations`
---
-
-INSERT INTO `lesson_locations` (`id`, `location_id`, `lesson_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, NULL, NULL),
-(2, 2, 1, NULL, NULL),
-(3, 3, 2, NULL, NULL),
-(4, 4, 2, NULL, NULL);
+INSERT INTO `lessons` (`id`, `begin_time`, `class_id`, `location_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(14, '2023-10-31 17:40:00', 1, 1, '2023-10-31 03:40:35', '2023-10-31 18:37:43', NULL),
+(15, '2023-11-01 08:32:00', 1, 1, '2023-10-31 18:32:21', '2023-10-31 18:32:21', NULL),
+(16, '2023-11-02 08:32:00', 1, 1, '2023-10-31 18:32:37', '2023-10-31 18:32:37', NULL),
+(17, '2023-11-01 08:32:00', 1, 2, '2023-10-31 18:32:51', '2023-10-31 18:32:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -198,7 +179,7 @@ CREATE TABLE `locations` (
 --
 
 INSERT INTO `locations` (`id`, `name`, `address`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'room 1 ', 'ha dong, ha noi', NULL, NULL, NULL),
+(1, 'room 1', 'ha dong, ha noi', NULL, NULL, NULL),
 (2, 'room 2', 'nam tu liem, ha noi', NULL, NULL, NULL),
 (3, 'room 3', 'cau giay, ha noi', NULL, NULL, NULL),
 (4, 'room 1', 'cau giay, ha noi', NULL, NULL, NULL);
@@ -230,8 +211,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2023_10_26_094922_adds_soft_deletes_to_users_table', 1),
 (12, '2023_10_25_075508_create_classes_table', 2),
 (13, '2023_10_25_075544_create_class_members_table', 2),
-(15, '2023_10_25_075739_create_lessons_table', 3),
-(16, '2023_10_31_010839_lesson_locations', 3);
+(18, '2023_10_25_075739_create_lessons_table', 3),
+(19, '2023_10_31_081302_adds_soft_deletes_to_lessons_table', 3);
 
 -- --------------------------------------------------------
 
@@ -267,7 +248,8 @@ CREATE TABLE `subjects` (
 
 INSERT INTO `subjects` (`id`, `name`, `credits`, `notes`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 'tieng nhat', 3, NULL, NULL, NULL, NULL),
-(2, 'tieng anh', 4, NULL, NULL, NULL, NULL);
+(2, 'tieng anh', 4, NULL, NULL, NULL, NULL),
+(3, 'laravel', 5, NULL, NULL, '2023-10-31 06:35:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -300,7 +282,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `phone_number`, `location`, `gerden`, `status`, `title`, `email_verified_at`, `department`, `notes`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'student', 'student@test.com', '$2y$10$X46.Pwq6lnyYZmku1WOBZOYPTkU88RyAaFxIlIWcAy3x1J4ZMV63i', 'student', 123456789, 'ha noi', 'male', 'currently enrolled', NULL, NULL, NULL, NULL, NULL, '2023-10-27 00:10:05', '2023-10-27 02:21:17', NULL),
+(1, 'student', 'student@test.com', '$2y$10$X46.Pwq6lnyYZmku1WOBZOYPTkU88RyAaFxIlIWcAy3x1J4ZMV63i', 'student', 123456789, 'ha noi', 'male', 'currently enrolled', NULL, NULL, NULL, NULL, NULL, '2023-10-27 00:10:05', '2023-10-31 18:27:01', '2023-10-31 18:27:01'),
 (2, 'student2', 'student2@test.com', '$2y$10$iX7rwqhrAJbhE1DPjZtkBetvGjVADXHJGSKXmTVSztp6vPfe9o/ke', 'student', 123456788, 'hai phong', 'female', 'currently enrolled', NULL, NULL, NULL, 'kha banh', NULL, '2023-10-27 00:11:02', '2023-10-27 00:11:02', NULL),
 (3, 'student3', 'student3@test.com', '$2y$10$oCKFOPSq0WSf6K3wn73upOinjMXJeZUAUoqcr.aCeUgtPP/n/b03K', 'student', 123456787, 'quang ninh', 'male', 'currently enrolled', NULL, NULL, NULL, 'aaaa', NULL, '2023-10-27 00:12:16', '2023-10-27 02:21:02', NULL),
 (4, 'student4', 'student4@test.com', '$2y$10$SlmN6pyP0kHqAlL/nB52RO9biM0NJUgZNUNUBceeqORWUMt/hXI0m', 'student', 123456786, 'bac ninh', 'female', 'currently enrolled', NULL, NULL, NULL, NULL, NULL, '2023-10-27 00:13:29', '2023-10-27 00:13:29', NULL),
@@ -350,12 +332,6 @@ ALTER TABLE `lessons`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `lesson_locations`
---
-ALTER TABLE `lesson_locations`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Chỉ mục cho bảng `locations`
 --
 ALTER TABLE `locations`
@@ -400,7 +376,7 @@ ALTER TABLE `attendances`
 -- AUTO_INCREMENT cho bảng `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `class_members`
@@ -412,7 +388,7 @@ ALTER TABLE `class_members`
 -- AUTO_INCREMENT cho bảng `class_subjects`
 --
 ALTER TABLE `class_subjects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -424,13 +400,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT cho bảng `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `lesson_locations`
---
-ALTER TABLE `lesson_locations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `locations`
@@ -442,13 +412,13 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
