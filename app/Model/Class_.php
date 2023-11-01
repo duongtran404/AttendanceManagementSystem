@@ -16,7 +16,7 @@ class Class_ extends Model
     }
 
     public  function class_member(){
-        return $this->hasMany(Class_member::class,'user_id','id');
+        return $this->hasMany(Class_member::class,'class_id','id');
     }
 
     public function class_subject(){
@@ -27,4 +27,5 @@ class Class_ extends Model
     {
         return $this->belongsTo(User::class);
     }
+
 }

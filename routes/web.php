@@ -75,7 +75,7 @@ Route::get('/lesson/archive/restore/{id}',[LessonController::class,'restore'])->
 
 
 
-Route::get('/attendance',[AttendanceController::class,'index'])->name('attendance');
+Route::get('/attendance/{id}',[AttendanceController::class,'show'])->name('attendance');
 
 Route::get('/lesson/attendance/list',[AttendanceController::class,'indexattendance'])->name('listAttendance');
 

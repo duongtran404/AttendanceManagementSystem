@@ -13,32 +13,15 @@
             <th>Status</th>
             <th>Note</th>
         </tr>
+        @foreach ($attendance as $item)           
         <tr>
-            <td>1</td>
-            <td>riki123</td>
-            <td>Duong123</td>
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="present" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                      present
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="absent">
-                    <label class="form-check-label" for="exampleRadios2">
-                      absent
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" id="exampleRadios3" value="late">
-                    <label class="form-check-label" for="exampleRadios3">
-                      late
-                    </label>
-                  </div>
-            </td>
-            <td><input type="text"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
+        @endforeach
     </table>
 </div>
 @endsection
