@@ -1,13 +1,12 @@
 @extends('layout.layout')
 @section('content')
-    <h1>CLASS MANAGEMENT</h1>
-    <form class="d-flex " role="search" action="" method="">
-        <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
+    <h1>ATTENDANCE REPORT</h1>
+    <form class="d-flex " role="search" action="{{ route('searchClass') }}" method="get">
+        @csrf
+        <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-
     <form action="">
-
         <div>
             <table class="table">
                 <tr>

@@ -24,7 +24,7 @@
                 <th>Location</th>
                 <th>Status</th>
                 <th>Notes</th>
-                <th></th>
+                <th>Option</th>
                 <th></th>
             </tr>
             @foreach ($students as $item)

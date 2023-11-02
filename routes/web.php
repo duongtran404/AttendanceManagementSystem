@@ -89,10 +89,11 @@ Route::get('lesson-report{id}',[LessonController::class,'indexReport'])->name('l
 Route::get('lesson-report/show{id}',[AttendanceController::class,'viewAttendance'])->name('viewAttendance');
 
 
-
 Route::get('/class-report',[ClassController::class,'indexReport'])->name('classReport');
 
 Route::get('/class',[ClassController::class,'index'])->name('class');
+
+Route::get('/class/search',[ClassController::class,'searchClass'])->name('searchClass');
 
 // Route::prefix('admin')->group(function () {
 //     Route::get('admin/dashboard',[DashboardController::class, 'index'])->name('dashboard');
