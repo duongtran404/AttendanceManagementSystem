@@ -7,7 +7,10 @@
     gerden ENUM('male', "emale, 'another')
     phone number INT(10)
     location VARCHAR
-    status ENUM( 'Currently Enrolled", Dropped Out; Leave of Absence) NULL title ENUM('Lecturer', Associate Professor', Professor') NULL department VARCHAR NULL notes VARCHAR NULL 
+    status ENUM( 'Currently Enrolled", Dropped Out; Leave of Absence) NULL 
+    title ENUM('Lecturer', Associate Professor', Professor') NULL 
+    department VARCHAR NULL 
+    notes VARCHAR NULL 
     created_ at TIMESTAMP NULL 
     update at TIMESTAMP NULL 
     delete_at TIMESTAMP NULL
@@ -47,7 +50,9 @@
     id INT A_I
     time_begin DATETIME
     location_ id VARCHAR FOREIGN KEY
-    created at TIMESTAMP NULL update at TIMESTAMP NULL delete at TIMESTAMP NULL class_id INT FORIEGN KEY
+    created at TIMESTAMP NULL update at TIMESTAMP NULL 
+    delete at TIMESTAMP NULL 
+    class_id INT FORIEGN KEY
 
 ### locations
     id INT A_I
