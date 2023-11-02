@@ -43,6 +43,7 @@
                 @endforeach
             </table>
         </div>
+        <a class="btn btn-primary" href="{{ route('lesson',[$attendance->class->id]) }}">< Back</a>
         <button class="btn btn-primary" type="submit">save</button>
     </form>
 @endsection

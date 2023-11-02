@@ -23,6 +23,7 @@
                 </tr>
             @endforeach
         </table>
+        <a class="btn btn-primary" href="{{ route('lessonReport',[$lesson->class->id]) }}">< Back</a>
     </div>
     </form>
 @endsection

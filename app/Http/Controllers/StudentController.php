@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\User;
+use App\Model\Users;
 use App\Models\Students;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,6 @@ class StudentController extends Controller
     }
     public function create(){
         return view("admin.student.createStudent");
-    }
-    public function store(Request $request){
-
     }
     public function show($id = null){
         $students = User::find($id);
@@ -78,5 +76,10 @@ class StudentController extends Controller
         }else{
             return redirect()->route("archiveStudent")->with("success","not found");
         }
+    }
+    public function search(Request $request){
+        $search = $request->input("search");
+        $students = Users::where('name', 'like', '%' . $search . '%')->get();
+        return view("admin.student.viewStudent",compact("students"));
     }
 }

@@ -13,41 +13,22 @@
     <div>
         <table class="table">
             <tr>
-                <th></th>
-                <th>Class name</th>
-                <th>Subject</th>
                 <th>Teacher</th>
+                <th>attendance at</th>
                 <th>Time Begin</th>
                 <th>Location</th>
                 <th>Option</th>
             </tr>
             @foreach ($lessons as $item)
                 <tr>
-                    <td></td>
-                    <td>{{ $item->class->name }}</td>
-                    <td>{{ $item->class->class_subject->subject->name }}</td>
                     <td>{{ $item->class->user->name }}</td>
+                    <td>{{ $item->updated_at }}</td>
                     <td>{{ $item->begin_time }}</td>
                     <td>{{ $item->location->name }}, 
                         {{ $item->location->address }}
                     </td>
                     <td><a class="btn btn-primary" href="{{ route('viewAttendance',[$item->id]) }}">View</a></td>
-                    {{-- <td>
-                        <a class="btn btn-primary" href="{{ route('editLesson', [$item->id]) }}"> Edit</a>
 
-                    </td>
-                    <td>
-                        <form action="{{ route('deleteLesson',[$item->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-primary" type="submit">Delete</button>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="{{ route('attendance',[$item->id]) }}" class="btn btn-primary " role="button"
-                            aria-disabled="true">Attendance</a>
-                    </td>
-                </tr> --}}
             @endforeach
 
         </table>

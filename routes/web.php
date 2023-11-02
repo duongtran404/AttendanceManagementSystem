@@ -52,6 +52,8 @@ Route::delete('/student/archive/delete/{id}',[StudentController::class,'hard_del
 
 Route::get('/student/archive/restore/{id}',[StudentController::class,'restore'])->name('restore-student');
 
+Route::get('/student/search',[StudentController::class,'search'])->name('searchStudent');
+
 
 
 Route::get('lesson/{id}',[LessonController::class,'index'])->name('lesson');
@@ -84,9 +86,9 @@ Route::get('/lesson/attendance/list',[AttendanceController::class,'indexattendan
 Route::get('/lesson/attendance/show',[AttendanceController::class, 'show'])->name('showAttendance');
 
 
-Route::get('lesson-report{id}',[LessonController::class,'indexReport'])->name('lessonReport');
+Route::get('lesson-report/{id}',[LessonController::class,'indexReport'])->name('lessonReport');
 
-Route::get('lesson-report/show{id}',[AttendanceController::class,'viewAttendance'])->name('viewAttendance');
+Route::get('lesson-report/show/{id}',[AttendanceController::class,'viewAttendance'])->name('viewAttendance');
 
 
 Route::get('/class-report',[ClassController::class,'indexReport'])->name('classReport');
