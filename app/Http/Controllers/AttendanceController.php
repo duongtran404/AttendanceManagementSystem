@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\DB;
 class AttendanceController extends Controller
 {
     public function show($id){
-        $attendance = Lesson::with("class","attendance")->where("id", $id)->first();
+        $attendance = Lesson::with("class","attendance")
+        ->where("id", $id)
+        ->first();
         return view('admin.attendance.attendance',compact('attendance'));
     }
     public function attendancemark(Request $request, $id){
@@ -52,6 +54,7 @@ class AttendanceController extends Controller
             ->join('users', 'attendances.user_id', '=', 'users.id')
             ->select('users.id','users.name as student_name', 'attendances.status', 'attendances.notes')
             ->where('attendances.lesson_id', $id)
+            // ->where('users.status','currently enrolled')
             ->get();     
         return view('admin.attendance.viewAttendance',compact('attendances','lesson'));
     }

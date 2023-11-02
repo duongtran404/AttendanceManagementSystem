@@ -8,25 +8,23 @@
 <div>
     <table class="table">
         <tr>
-            <th></th>
-            <th>Class name</th>
-            <th>Subject</th>
             <th>Teacher</th>
+            <th>Subject</th>
             <th>Time Begin</th>
             <th>Location</th>
+            <th>Deleted at</th>
             <th>Option</th>
             <th></th>
         </tr>
         @foreach ($lessons as $item)
             <tr>
-                <td></td>
-                <td>{{ $item->class->name }}</td>
-                <td>{{ $item->class->class_subject->subject->name }}</td>
                 <td>{{ $item->class->user->name }}</td>
+                <td>{{ $item->class->class_subject->subject->name }}</td>
                 <td>{{ $item->begin_time }}</td>
                 <td>{{ $item->location->name }}, 
                     {{ $item->location->address }}
                 </td>
+                <td>{{ $item->deleted_at->format('d/m/Y H:i:s') }}</td>
                 <td>
                     <form action="{{ route('hard-delete-lesson', [$item->id]) }}" method="POST">
                         @csrf

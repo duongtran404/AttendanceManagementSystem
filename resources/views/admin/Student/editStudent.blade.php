@@ -59,16 +59,14 @@
             @enderror
         </div>
 
-        <div class="form-group">
-            <label for="remember-me" class="text-dark"></label><br>
-            <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">
-        </div>
+        <a class="btn btn-primary" href="{{ route('student') }}">< Back</a>
+
+            <button class="btn btn-primary" type="submit">Save</button>
 
         {{-- <form action="{{ route('deleteStudent', [$students->id]) }}" method="POST">
             @csrf
                 @method('DELETE') 
             <button class="btn btn-primary mt-1" type="submit">delete</button>
         </form> --}}
-
     </form>
 @endsection

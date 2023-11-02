@@ -64,5 +64,6 @@
                 </td>
             </tr> --}}
         </table>
+        <a class="btn btn-primary" href="{{ route('status-statistical') }}">status statistical</a>
     </div>
 @endsection

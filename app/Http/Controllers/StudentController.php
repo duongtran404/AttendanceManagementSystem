@@ -82,4 +82,19 @@ class StudentController extends Controller
         $students = Users::where('name', 'like', '%' . $search . '%')->get();
         return view("admin.student.viewStudent",compact("students"));
     }
+    public function status_statistical(){
+        $currently_enrolled = User::where("status","currently enrolled")->count();
+        $leave_of_absence = User::where("status","leave of absence")->count();
+        $dropped_out = User::where("status","dropped out")->count();
+
+        $sum = $currently_enrolled + $leave_of_absence + $dropped_out;
+
+        $percent_ce = ($currently_enrolled*100)/($sum);
+
+        $percent_la = ($leave_of_absence*100)/($sum);
+
+        $percent_do = ($dropped_out*100)/($sum);
+
+        return view("admin.student.status_statistical",compact("currently_enrolled","leave_of_absence","dropped_out","percent_ce","percent_la","percent_do","sum"));
+    }
 }

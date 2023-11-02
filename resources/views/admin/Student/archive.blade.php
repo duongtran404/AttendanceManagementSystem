@@ -52,4 +52,6 @@
             @endforeach
         </table>
     </div>
+    <a class="btn btn-primary" href="{{ route('student') }}">< Back</a>
+
 @endsection

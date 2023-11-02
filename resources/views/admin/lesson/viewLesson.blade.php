@@ -13,26 +13,24 @@
     <div>
         <table class="table">
             <tr>
-                <th></th>
-                <th>Class name</th>
-                <th>Subject</th>
                 <th>Teacher</th>
+                <th>Subject</th>
                 <th>Time Begin</th>
                 <th>Location</th>
+                <th>Created at</th>
                 <th></th>
                 <th>Option</th>
                 <th></th>
             </tr>
             @foreach ($lessons as $item)
                 <tr>
-                    <td></td>
-                    <td>{{ $item->class->name }}</td>
-                    <td>{{ $item->class->class_subject->subject->name }}</td>
                     <td>{{ $item->class->user->name }}</td>
+                    <td>{{ $item->class->class_subject->subject->name }}</td>
                     <td>{{ $item->begin_time }}</td>
                     <td>{{ $item->location->name }}, 
                         {{ $item->location->address }}
                     </td>
+                    <td>{{ $item->created_at->format('d/m/Y H:i:s') }}</td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('editLesson', [$item->id]) }}"> Edit</a>
 

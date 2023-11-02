@@ -54,6 +54,8 @@ Route::get('/student/archive/restore/{id}',[StudentController::class,'restore'])
 
 Route::get('/student/search',[StudentController::class,'search'])->name('searchStudent');
 
+Route::get('/status-statistical',[StudentController::class,'status_statistical'])->name('status-statistical');
+
 
 
 Route::get('lesson/{id}',[LessonController::class,'index'])->name('lesson');
