@@ -83,6 +83,15 @@ Route::get('/lesson/attendance/list',[AttendanceController::class,'indexattendan
 
 Route::get('/lesson/attendance/show',[AttendanceController::class, 'show'])->name('showAttendance');
 
+
+Route::get('lesson-report{id}',[LessonController::class,'indexReport'])->name('lessonReport');
+
+Route::get('lesson-report/show{id}',[AttendanceController::class,'viewAttendance'])->name('viewAttendance');
+
+
+
+Route::get('/class-report',[ClassController::class,'indexReport'])->name('classReport');
+
 Route::get('/class',[ClassController::class,'index'])->name('class');
 
 // Route::prefix('admin')->group(function () {

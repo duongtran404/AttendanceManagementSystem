@@ -28,7 +28,7 @@
                         <a class="nav-link active" aria-current="page" href="">Classes</a>
                     </li> --}}
                     <li class="nav_item">
-                        <a class="nav-link active" aria-current="page" href="/attendance/list">Attendance Report</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('classReport') }}">Attendance Report</a>
                     </li>    
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post">

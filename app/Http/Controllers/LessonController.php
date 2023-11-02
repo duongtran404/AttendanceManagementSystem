@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Attendance;
 use App\Model\Class_;
 use Illuminate\Http\Request;
 use App\Model\Lesson;
@@ -13,7 +14,7 @@ use function PHPUnit\Framework\returnSelf;
 class LessonController extends Controller
 {
     public function index($id){
-        $lessons = Lesson::with('location','class')->orderBy('begin_time','asc')->where('class_id','=', $id)->get();
+        $lessons = Lesson::with('location','class')->orderBy('begin_time','asc')->where('class_id','=', $id)->where('status','0')->get();
         return view("admin.lesson.viewlesson",compact('lessons','id'));
     }
     public function create($id){
@@ -91,6 +92,10 @@ class LessonController extends Controller
         }else{
             return redirect()->route("class")->with("error","not found");
         }
-
     }
+    public function indexReport($id){
+        $lessons = Lesson::with('location','class')->orderBy('begin_time','asc')->where('class_id','=', $id)->where('status','1')->get();
+        return view("admin.lesson.viewLessonReport",compact('lessons','id'));
+    }
+
 }

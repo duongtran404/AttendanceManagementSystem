@@ -15,4 +15,9 @@ class ClassController extends Controller
         // dd($class);
         return view("admin.class.viewClass",compact("class"));
     }
+    public function indexReport(){
+        $class = Class_::with("class_subject","user")->get();
+        // dd($class);
+        return view("admin.class.viewClassReport",compact('class'));
+    }
 }

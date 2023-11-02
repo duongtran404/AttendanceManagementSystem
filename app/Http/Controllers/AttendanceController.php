@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Model\Attendance;
 use App\Model\Class_member;
 use App\Model\Lesson;
+use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
@@ -40,8 +41,19 @@ class AttendanceController extends Controller
             Attendance::create($data);
             
         }
+
+        Lesson::where('id', $validated['lesson_id'])->update(['status'=> '1']);
         
         return redirect()->route('class')->with('success','done');
+    }
+    public function viewAttendance($id){
+        $lesson = Lesson::with("class","attendance")->where("id", $id)->first();
+        $attendances = DB::table('attendances')
+            ->join('users', 'attendances.user_id', '=', 'users.id')
+            ->select('users.id','users.name as student_name', 'attendances.status', 'attendances.notes')
+            ->where('attendances.lesson_id', $id)
+            ->get();     
+        return view('admin.attendance.viewAttendance',compact('attendances','lesson'));
     }
 
 }
