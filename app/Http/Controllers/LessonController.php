@@ -24,8 +24,9 @@ class LessonController extends Controller
         return view("admin.lesson.createLesson", compact("classes","id"));
     }
     public function store(Request $request,$id){
+        $class = Class_::find($id);
         $validated = $request->validate([
-            "begin_time"    => "required|date",
+            "begin_time"    => "required|date|after:$class->begin_date|before:$class->end_date",
             "location"      => "required|exists:locations,name",
             "address"       => "required|exists:locations,address",
 
