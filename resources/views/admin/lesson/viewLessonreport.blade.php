@@ -14,7 +14,7 @@
         <table class="table">
             <tr>
                 <th>Teacher</th>
-                <th>attendance at</th>
+                <th>Attendance at</th>
                 <th>Time Begin</th>
                 <th>Location</th>
                 <th>Option</th>
@@ -22,7 +22,7 @@
             @foreach ($lessons as $item)
                 <tr>
                     <td>{{ $item->class->user->name }}</td>
-                    <td>{{ $item->updated_at }}</td>
+                    <td>{{ Carbon\Carbon::parse($item->updated_at)->format('H:i:s d/m/Y') }}</td>
                     <td>{{ $item->begin_time }}</td>
                     <td>{{ $item->location->name }}, 
                         {{ $item->location->address }}

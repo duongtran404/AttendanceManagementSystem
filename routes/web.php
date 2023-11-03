@@ -87,6 +87,9 @@ Route::get('/lesson/attendance/list',[AttendanceController::class,'indexattendan
 
 Route::get('/lesson/attendance/show',[AttendanceController::class, 'show'])->name('showAttendance');
 
+Route::get('/attendance-statistical/{id}',[AttendanceController::class,'attendance_statistical'])->name('attendance-statistical');
+
+
 
 Route::get('lesson-report/{id}',[LessonController::class,'indexReport'])->name('lessonReport');
 

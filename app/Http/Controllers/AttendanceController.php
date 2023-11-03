@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Class_;
 use App\Model\User;
+use App\Model\Users;
 use Illuminate\Http\Request;
 use App\Model\Attendance;
 use App\Model\Class_member;
@@ -54,9 +56,26 @@ class AttendanceController extends Controller
             ->join('users', 'attendances.user_id', '=', 'users.id')
             ->select('users.id','users.name as student_name', 'attendances.status', 'attendances.notes')
             ->where('attendances.lesson_id', $id)
-            // ->where('users.status','currently enrolled')
+            ->where('users.status','currently enrolled')
             ->get();     
         return view('admin.attendance.viewAttendance',compact('attendances','lesson'));
     }
+    public function attendance_statistical($id){
+        $lessons = Lesson::with('class','attendance')->where('class_id',$id)->where('status','1')->get();
+        $lessonStatistical = [];
+        foreach($lessons as $lesson){
+            $attendance = Attendance::where('lesson_id', $lesson->id)->where('status','present')->count();
+            $totalLesson = Attendance::where('lesson_id', $lesson->id)->count();
+            $statistical = ($attendance/$totalLesson)*100;
+            $lessonStatistical[] = [
+                'lesson_id' =>$lesson->id,
+                'subject'=>$lesson->class->name,
+                'begin_time'=>$lesson->begin_time,
+                'name'=> $lesson->class->name,
+                'statistical'=>$statistical,
+            ];
+        }
 
+        return view('admin.attendance.attendanceStatistical',compact('lessonStatistical'));
+    }
 }

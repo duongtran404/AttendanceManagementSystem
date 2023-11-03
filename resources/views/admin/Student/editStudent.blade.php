@@ -63,10 +63,5 @@
 
             <button class="btn btn-primary" type="submit">Save</button>
 
-        {{-- <form action="{{ route('deleteStudent', [$students->id]) }}" method="POST">
-            @csrf
-                @method('DELETE') 
-            <button class="btn btn-primary mt-1" type="submit">delete</button>
-        </form> --}}
     </form>
 @endsection

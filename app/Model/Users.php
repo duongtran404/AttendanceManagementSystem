@@ -10,6 +10,7 @@ class Users extends Model
     protected $fillable = [
         'name', 'email', 'password','role','phone_number','location','gerden','status','title','notes','department'
     ];
+    
     public function class(){
         return $this->hasMany(Class_::class,'user_id','id');
     }

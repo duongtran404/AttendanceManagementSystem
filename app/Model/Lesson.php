@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -12,15 +13,12 @@ class Lesson extends Model
     protected $fillable = [
         'begin_time','class_id','location_id'
     ];
-//    public function info_class(){
-//        return $this->hasOneThrough('App\Model\Classes'
-//        , 'App\Model\Class_member',
-//        'class_id',
-//        'class_member_id',
-//        'id',
-//        'id'
-//    );
-//    }
+    protected $begin_time = ['begin_time'];
+
+    public function getBeginTimeAttribute($begin_time){
+        return Carbon::parse($begin_time)->format('H:i d/m/Y');
+    }
+
     public function attendance(){
         return $this->hasOne(Attendance::class,'lesson_id','id');
     }

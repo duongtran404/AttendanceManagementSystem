@@ -6,6 +6,7 @@ use App\Model\Class_;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Model\Lesson;
+use Carbon\Carbon;
 
 class ClassController extends Controller
 {
