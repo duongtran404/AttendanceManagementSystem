@@ -6,14 +6,17 @@
     <div>
         <table class="table">
             <tr>
-
+                <th>Lesson ID</th>
                 <th>Class Name</th>
-                <th>persent persent: </th>
+                <th>Persent persent: </th>
+                <th>present/total</th>
             </tr>
             @foreach ($lessonStatistical as $item)
                 <tr>
+                    <td>{{ $item['lesson_id'] }}</td>
                     <td>{{ $item['subject'] }}</td>
                     <td>{{ $item['statistical'] }} %</td>
+                    <td>{{ $item['attendance'] }}/{{ $item['total'] }}</td>
                 </tr>
             @endforeach
         </table>

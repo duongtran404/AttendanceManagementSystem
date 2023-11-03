@@ -70,12 +70,13 @@ class AttendanceController extends Controller
             $lessonStatistical[] = [
                 'lesson_id' =>$lesson->id,
                 'subject'=>$lesson->class->name,
-                'begin_time'=>$lesson->begin_time,
+                'attendance'=>$attendance,
+                'total'=>$totalLesson,
                 'name'=> $lesson->class->name,
                 'statistical'=>$statistical,
             ];
         }
-
+    
         return view('admin.attendance.attendanceStatistical',compact('lessonStatistical'));
     }
 }

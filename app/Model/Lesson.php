@@ -15,6 +15,10 @@ class Lesson extends Model
     ];
     protected $begin_time = ['begin_time'];
 
+    public function getUpdatedAtAttribute($value){
+        return Carbon::parse($value)->format('H:i:s d/m/Y');
+    }
+
     public function getBeginTimeAttribute($begin_time){
         return Carbon::parse($begin_time)->format('H:i d/m/Y');
     }

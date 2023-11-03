@@ -19,10 +19,11 @@
                 <th>Location</th>
                 <th>Option</th>
             </tr>
+    
             @foreach ($lessons as $item)
                 <tr>
                     <td>{{ $item->class->user->name }}</td>
-                    <td>{{ Carbon\Carbon::parse($item->updated_at)->format('H:i:s d/m/Y') }}</td>
+                    <td>{{ $item->updated_at }}</td>
                     <td>{{ $item->begin_time }}</td>
                     <td>{{ $item->location->name }}, 
                         {{ $item->location->address }}
