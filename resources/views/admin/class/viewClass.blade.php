@@ -1,5 +1,6 @@
 @extends('layout.layout')
 @section('content')
+@include('layout.success-message')
     <h1>CLASS MANAGEMENT</h1>
     <form class="d-flex " role="search" action="{{ route('searchClass') }}" method="get">
         @csrf

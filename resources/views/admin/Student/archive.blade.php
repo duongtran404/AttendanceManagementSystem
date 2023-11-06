@@ -1,6 +1,8 @@
 @extends('layout.layout')
 @section('content')
     <h1>STUDENT MANAGEMENT</h1>
+    @include('layout.success-message')
+    @include('layout.error-message')
     <form class="d-flex " role="search" action="{{ route('student') }}" method="post">
         <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

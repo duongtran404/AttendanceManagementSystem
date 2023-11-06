@@ -48,7 +48,7 @@ class AttendanceController extends Controller
 
         Lesson::where('id', $validated['lesson_id'])->update(['status'=> '1']);
         
-        return redirect()->route('class')->with('success','done');
+        return redirect()->route('class')->with('success','Attendance is successfully');
     }
     public function viewAttendance($id){
         $lesson = Lesson::with("class","attendance")->where("id", $id)->first();
@@ -61,22 +61,31 @@ class AttendanceController extends Controller
         return view('admin.attendance.viewAttendance',compact('attendances','lesson'));
     }
     public function attendance_statistical($id){
+        $lesson = Lesson::with('class')->where('class_id',$id)->first();
         $lessons = Lesson::with('class','attendance')->where('class_id',$id)->where('status','1')->get();
         $lessonStatistical = [];
         foreach($lessons as $lesson){
             $attendance = Attendance::where('lesson_id', $lesson->id)->where('status','present')->count();
             $totalLesson = Attendance::where('lesson_id', $lesson->id)->count();
-            $statistical = ($attendance/$totalLesson)*100;
+            $statistical = round(($attendance/$totalLesson)*100);
+            $absent = $totalLesson-$attendance;
             $lessonStatistical[] = [
                 'lesson_id' =>$lesson->id,
                 'subject'=>$lesson->class->name,
                 'attendance'=>$attendance,
+                'absent'=>$absent,
                 'total'=>$totalLesson,
                 'name'=> $lesson->class->name,
                 'statistical'=>$statistical,
             ];
         }
     
-        return view('admin.attendance.attendanceStatistical',compact('lessonStatistical'));
+        return view('admin.attendance.attendanceStatistical',compact('lessonStatistical','lesson'));
+    }
+    public function attendance_record($id){
+        $lessons = Lesson::with('class')->where('status','1')->where('class_id',$id)->get();
+        $lessons->count();
+
     }
 }
+

@@ -49,7 +49,7 @@ class AuthController extends Controller
         ]);
 
 
-        return redirect()->route('login')->with('status','Register is successfully');
+        return redirect()->route('login')->with('success','Register is successfully');
     }
     public function login(){
         return view('admin.auth.login');
@@ -62,7 +62,7 @@ class AuthController extends Controller
         ]);
         if(auth()->attempt($validated)){
             request()->session()->regenerate();
-            return redirect()->route('dashboard')->with('success','loggin is successfully');
+            return redirect()->route('student')->with('success','loggin is successfully');
         }
         return redirect()->route('login')->withErrors([
             'email' => "No matching user found with the provided email and password"

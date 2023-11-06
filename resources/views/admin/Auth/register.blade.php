@@ -34,7 +34,7 @@
                             <span class="d-block fs-6 text-danger mt-2"> {{ $message }} </span>
                         @enderror
                     </div>
-                    <div class="form-group mt-3">
+                    {{-- <div class="form-group mt-3">
                         <label for="gerden" class="text-dark">Gerden(*):</label><br>
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="gerden">
                             <option selected>Open this select menu</option>
@@ -97,7 +97,7 @@
                         @error('notes')
                             <span class="d-block fs-6 text-danger mt-2"> {{ $message }} </span>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="remember-me" class="text-dark"></label><br>
                         <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">

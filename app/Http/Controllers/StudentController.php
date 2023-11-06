@@ -38,16 +38,12 @@ class StudentController extends Controller
             'status'=> $validated['status'],
             'notes'=> $validated['notes'],
         ]);
-        return redirect()->route('student')->with('success','');
+        return redirect()->route('student')->with('success','Update student is successfully');
     }
     public function destroy(Request $request,$id){
         $student = User::find($id);
-        // if($student->deleted_at != null){
-        //     $student->forceDelete();
-        //     return redirect()->route('student');
-        // }
         $student->delete();
-        return redirect()->route('student')->with('success','delete is successfull');
+        return redirect()->route('student')->with('success','delete is successfully');
     }
 
     public function archive(){
@@ -60,9 +56,9 @@ class StudentController extends Controller
         if($student){
             $student->forceDelete();
             // dd($student);
-            return redirect()->route("archiveStudent")->with("success","hard delete is successfull");
+            return redirect()->route("archiveStudent")->with("success","Hard delete is successfully");
         }else{
-            return redirect()->route("archiveStudent")->with("success","not found");
+            return redirect()->route("archiveStudent")->with("error","not found");
         }
         // $student->history()->forceDelete();
         // return redirect()->route("archiveStudent")->with("success","hard delete is successfull");
@@ -72,9 +68,9 @@ class StudentController extends Controller
         if($student){
             $student->restore();
             // dd($student);
-            return redirect()->route("archiveStudent")->with("success","restore is successfull");
+            return redirect()->route("archiveStudent")->with("success","Restore is successfully");
         }else{
-            return redirect()->route("archiveStudent")->with("success","not found");
+            return redirect()->route("archiveStudent")->with("error","not found");
         }
     }
     public function search(Request $request){

@@ -3,11 +3,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 col-md-6">
-                @if (session('status'))
-                    <div class="mb-4 text-sm font-medium text-green-600">
-                        {{ session('status') }}
-                    </div>
-                @endif
+                @include('layout.success-message')
                 <form class="form mt-5" action="{{ route('login') }}" method="post">
                     @csrf
                     <h3 class="text-center text-dark">Login</h3>

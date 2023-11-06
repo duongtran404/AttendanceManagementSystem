@@ -31,6 +31,7 @@
                             {{-- <a class="btn btn-primary" href="">Delete</a> --}}
                             <a class="btn btn-primary" href="{{ route('lessonReport',[$item->id]) }}">About</a>
                             <a class="btn btn-primary" href="{{ route('attendance-statistical',[$item->id]) }}">Attendance statistical</a>
+                            <a class="btn btn-primary" href="{{ route('attendance-record',[$item->id]) }}">Attendance record</a>
                         </td>
 
                     </tr>

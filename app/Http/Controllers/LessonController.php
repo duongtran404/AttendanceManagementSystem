@@ -26,10 +26,13 @@ class LessonController extends Controller
     }
     public function store(Request $request,$id){
         $class = Class_::find($id);
+        // dd($class->end_date);
         $validated = $request->validate([
-            "begin_time"    => "required|date|after:$class->begin_date|before:$class->end_date",
             "location"      => "required|exists:locations,name",
             "address"       => "required|exists:locations,address",
+            // "begin_time"    => "required|date|after:$class->begin_date|before:$class->end_date",
+            "begin_time"    => "required|date|after:$class->begin_date",
+            // "begin_time"    => "required|date|before:$class->end_date",
 
         ]);
         $location = Location::where("name",$validated["location"])->where("address", $validated["address"])->first();
@@ -40,7 +43,7 @@ class LessonController extends Controller
             "location_id"   => $location->id,
             "class_id"      => $id,
         ]);
-        return redirect()->route("class")->with("success","done");
+        return redirect()->route("class")->with("success","Create new lesson is successfully");
     }
     public function show($id){
         $lessons = Lesson::with('class','location')->where('id','=',$id)->first();
@@ -65,7 +68,7 @@ class LessonController extends Controller
             "location_id"   => $location->id,
             // "class_id"      => $id,
         ]);
-        return redirect()->route("class")->with("success","done");
+        return redirect()->route("class")->with("success","Update lesson is successfully");
     }
     public function destroy($id){
         $lesson = Lesson::find($id);
@@ -81,7 +84,7 @@ class LessonController extends Controller
         // dd($lesson);
         if($lesson){
             $lesson->forceDelete();
-            return redirect()->back()->with("success","hard delete is successful");
+            return redirect()->back()->with("success","Hard delete is successfully");
         }else{
             return redirect()->route("class")->with("error","not found");
         }
@@ -90,7 +93,7 @@ class LessonController extends Controller
         $lesson = Lesson::onlyTrashed()->find($id);
         if($lesson){
             $lesson->restore();
-            return redirect()->route("class")->with("success","restore is successful");
+            return redirect()->route("class")->with("success","Restore is successfully");
         }else{
             return redirect()->route("class")->with("error","not found");
         }
