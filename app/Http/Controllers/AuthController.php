@@ -23,14 +23,14 @@ class AuthController extends Controller
             'name'              => 'required|min:0|max:30',
             'email'             => 'required|email|unique:users,email',
             'password'          => 'required|min:1|confirmed',
-            'role'              => 'required',
-            'phone_number'      => 'required', //|regex:/^0[0-9]{9}$/'
-            'location'          => 'required',
-            'gerden'            => 'required',
-            'department'        => 'nullable',
-            'status'            => 'nullable',
-            'title'             => 'nullable',
-            'notes'             => 'nullable|max:255',
+            // 'role'              => 'required',
+            // 'phone_number'      => 'required', //|regex:/^0[0-9]{9}$/'
+            // 'location'          => 'required',
+            // 'gerden'            => 'required',
+            // 'department'        => 'nullable',
+            // 'status'            => 'nullable',
+            // 'title'             => 'nullable',
+            // 'notes'             => 'nullable|max:255',
         ]);
 
         // dd($validated);
@@ -38,14 +38,14 @@ class AuthController extends Controller
             'name'              => $validated['name'],
             'email'             => $validated['email'],
             'password'          => Hash::make($validated['password']),
-            'role'              => $validated['role'],
-            'location'          => $validated['location'],
-            'gerden'            => $validated['gerden'],
-            'phone_number'      => $validated['phone_number'],
-            'department'        => $validated['department'],
-            'status'            => $validated['status'],
-            'title'             => $validated['title'],
-            'notes'             => $validated['notes'],
+            // 'role'              => $validated['role'],
+            // 'location'          => $validated['location'],
+            // 'gerden'            => $validated['gerden'],
+            // 'phone_number'      => $validated['phone_number'],
+            // 'department'        => $validated['department'],
+            // 'status'            => $validated['status'],
+            // 'title'             => $validated['title'],
+            // 'notes'             => $validated['notes'],
         ]);
 
 

@@ -20,27 +20,24 @@ class LessonController extends Controller
     }
     public function create($id){
         $classes = Class_::with('class_subject')->where('id','=', $id)->first();
-
+        $locations = Location::all();
         // dd($classes->name);
-        return view("admin.lesson.createLesson", compact("classes","id"));
+        return view("admin.lesson.createLesson", compact("classes","id","locations"));
     }
     public function store(Request $request,$id){
+
         $class = Class_::find($id);
         // dd($class->end_date);
         $validated = $request->validate([
-            "location"      => "required|exists:locations,name",
-            "address"       => "required|exists:locations,address",
+            "location"      => "required",
             // "begin_time"    => "required|date|after:$class->begin_date|before:$class->end_date",
             "begin_time"    => "required|date|after:$class->begin_date",
-            // "begin_time"    => "required|date|before:$class->end_date",
-
         ]);
-        $location = Location::where("name",$validated["location"])->where("address", $validated["address"])->first();
 
         // dd($validated);
         Lesson::create([
             "begin_time"    => $validated["begin_time"],
-            "location_id"   => $location->id,
+            "location_id"   => $validated["location"],
             "class_id"      => $id,
         ]);
         return redirect()->route("class")->with("success","Create new lesson is successfully");
@@ -73,7 +70,7 @@ class LessonController extends Controller
     public function destroy($id){
         $lesson = Lesson::find($id);
         $lesson->delete();
-        return redirect()->back()->with("success","done");
+        return redirect()->back()->with("success","delele compeleted");
     }
     public function archive($id){
         $lessons = Lesson::onlyTrashed()->orderBy("deleted_at")->where('class_id','=', $id)->get();

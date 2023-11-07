@@ -6,16 +6,47 @@ use App\Model\User;
 use App\Model\Users;
 use App\Models\Students;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
+    public $users;
+    public function __construct(){
+        $this->users = new User();
+    }    
     public function index(){
-        $students = User::all()->where("role","student");
+        $students = DB::table('users')->where("role","student")->where('deleted_at',null)->paginate(10);
         return view("admin.student.viewStudent",compact("students"));
     }
     public function create(){
         return view("admin.student.createStudent");
     }
+    public function store(Request $request){
+        // dd($request->all());
+        $validated = $request->validate([
+            'name'              => 'required|min:3|max:30',
+            'email'             => 'required|email|unique:users,email',
+            'phone_number'      => 'required', //|regex:/^0[0-9]{9}$/'
+            'location'          => 'required',
+            'gerden'            => 'required',
+            // 'status'            => 'nullable',
+            'notes'             => 'nullable|max:255',
+        ]);
+        // dd($validated);
+        User::create([
+            'name'          => $validated['name'],
+            'role'          =>'student',
+            'email'         => $validated['email'],
+            'phone_number'  => $validated['phone_number'],
+            'location'      => $validated['location'],
+            'gerden'        => $validated['gerden'],
+            'status'        => 'currently enrolled',
+            'notes'         => $validated['notes']
+            
+        ]);
+        return redirect()->route('student')->with('success','created student is successfully');
+    }
+
     public function show($id = null){
         $students = User::find($id);
         return view("admin.student.editStudent",compact("students"));
@@ -42,12 +73,16 @@ class StudentController extends Controller
     }
     public function destroy(Request $request,$id){
         $student = User::find($id);
-        $student->delete();
-        return redirect()->route('student')->with('success','delete is successfully');
+        if($student){
+            $student->delete();
+            return redirect()->back()->with('success','delete is successfully');
+        }else{
+            return redirect()->back()->with('error','not found');
+        }
     }
 
     public function archive(){
-        $students = User::onlyTrashed()->orderBy('deleted_at')->where("role","student")->get();
+        $students = User::onlyTrashed()->where("role","student")->paginate(10);
         // dd($students);
         return view("admin.student.archive",compact("students"));
     }

@@ -40,6 +40,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/student',[StudentController::class,'index'])->name('student');
 
+Route::get('/student/create',[StudentController::class,'create'])->name('createStudent');
+
+Route::post('/student/create',[StudentController::class,'store']);
+
 Route::get('/student/edit/{id}',[StudentController::class,'show'])->name('editStudent');
 
 Route::post('/student/update/{id}',[StudentController::class, 'update'])->name('updateStudent');
@@ -99,9 +103,36 @@ Route::get('/attendance-record/{id}',[AttendanceController::class,'attendance_re
 
 Route::get('/class-report',[ClassController::class,'indexReport'])->name('classReport');
 
+
+
 Route::get('/class',[ClassController::class,'index'])->name('class');
 
 Route::get('/class/search',[ClassController::class,'searchClass'])->name('searchClass');
+
+Route::get('/class/create',[ClassController::class,'create'])->name('createClass');
+
+Route::post('/class/create',[ClassController::class,'store']);
+
+Route::get('/class/edit/{id}',[ClassController::class,'edit'])->name('editClass');
+
+Route::post('/class/edit/{id}',[ClassController::class,'update']);
+
+Route::delete('/class/destroy/{id}',[ClassController::class,'destroy'])->name('deleteClass');
+
+Route::get('/class/archive',[ClassController::class,'archiveClass'])->name('archiveClass');
+
+Route::delete('/class/archive/delete/{id}',[ClassController::class,'hard_delete'])->name('hard-delete-class');
+
+Route::get('/class/archive/restore/{id}',[ClassController::class,'restore'])->name('restore-class');
+
+Route::get('/class/member/{id}',[ClassController::class,'showClassMember'])->name('class_member');
+
+Route::get('/class/member/add/{id}',[ClassController::class,'showStudent'])->name('student-list');
+
+Route::post('/class/member/add-member/{id}',[ClassController::class,'add_member'])->name('add-member');
+
+Route::delete('/class/member/delete/{id}',[ClassController::class,'delete_member'])->name('deleteMember');
+
 
 // Route::prefix('admin')->group(function () {
 //     Route::get('admin/dashboard',[DashboardController::class, 'index'])->name('dashboard');

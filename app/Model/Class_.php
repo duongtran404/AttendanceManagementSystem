@@ -4,9 +4,12 @@ namespace App\Model;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Class_ extends Model
 {
+    use SoftDeletes;
+
 
     protected $table = "classes";
     protected $fillable = [
@@ -15,6 +18,11 @@ class Class_ extends Model
     protected $begin_date = ["begin_date"];
 
     protected $end_date = ["end_date"];
+
+    public function getDeletedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('H:i:s d/m/Y');
+    }
     
     public function getBeginDateAttribute($begin_date){
         return Carbon::parse($begin_date)->format('d/m/Y');
@@ -39,5 +47,7 @@ class Class_ extends Model
     {
         return $this->belongsTo(Users::class);
     }
+
+
 
 }

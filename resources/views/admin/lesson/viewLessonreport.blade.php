@@ -12,7 +12,7 @@
     </form>
     <div>
         <table class="table">
-            <tr>
+            <tr class="text-center">
                 <th>Teacher</th>
                 <th>Attendance at</th>
                 <th>Time Begin</th>
@@ -21,7 +21,7 @@
             </tr>
     
             @foreach ($lessons as $item)
-                <tr>
+                <tr class="text-center">
                     <td>{{ $item->class->user->name }}</td>
                     <td>{{ $item->updated_at }}</td>
                     <td>{{ $item->begin_time }}</td>

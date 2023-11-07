@@ -6,7 +6,7 @@
         <h3 class="text-center text-dark">{{ $lessons->class->class_subject->subject->name }}</h3>
         <div class="form-group mt-3">
             <label for="begin_time" class="text-dark">Begin time: </label><br>
-            <input type="datetime-local" name="begin_time" id="begin_time" class="form-control" value="{{ $lessons->begin_time }}">
+            <input type="datetime-local" name="begin_time" id="begin_time" class="form-control" value="{{ date('Y-d-m H:i:s', strtotime($lessons->begin_time)) }}">
             @error('begin_time')
                 <span class="d-block fs-6 text-danger mt-2"> {{ $message }} </span>
             @enderror

@@ -8,14 +8,14 @@
     <h3 class="text-center">Attendance</h3>
     <div>
         <table class="table">
-            <tr>
+            <tr class="text-center">
                 <th>Student id</th>
                 <th>Name</th>
                 <th>Status</th>
                 <th>Note</th>
             </tr>
             @foreach ($attendances as $attendance)
-                <tr>
+                <tr class="text-center">
                     <td>{{ $attendance->id }}</td>
                     <td>{{ $attendance->student_name }}</td>
                     <td>{{ $attendance->status }}</td>

@@ -54,6 +54,9 @@
             @endforeach
         </table>
     </div>
+    <div class="pagination">
+        {{ $students->links() }}
+    </div>
     <a class="btn btn-primary" href="{{ route('student') }}">< Back</a>
 
 @endsection

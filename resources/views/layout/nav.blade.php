@@ -13,9 +13,6 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
                 @endguest
                 @auth
                     <li class="nav-item">
@@ -23,19 +20,23 @@
                     </li>
                     <li class="nav_item">
                         <a class="nav-link active" aria-current="page" href="{{ route('class') }}">Class</a>
-                    </li>            
+                    </li>
                     {{-- <li class="nav_item">
-                        <a class="nav-link active" aria-current="page" href="">Classes</a>
-                    </li> --}}
+                    <a class="nav-link active" aria-current="page" href="">Classes</a>
+                </li> --}}
                     <li class="nav_item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('classReport') }}">Attendance Report</a>
-                    </li>    
+                        <a class="nav-link active" aria-current="page" href="{{ route('classReport') }}">Attendance
+                            Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/register">Add Manager</a>
+                    </li>
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
                             <button class="btn btn-danger">Sign out {{ Auth::user()->email }}</button>
                         </form>
-                    </li>      
+                    </li>
                 @endauth
             </ul>
         </div>

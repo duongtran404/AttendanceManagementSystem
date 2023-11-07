@@ -18,10 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('role', ['admin','student','teacher']);
-            $table->integer('phone_number');
-            $table->string('location');
-            $table->enum('gerden', ['male','female','another']);
+            $table->enum('role', ['admin','student','teacher'])->nullable();
+            $table->integer('phone_number')->nullable();
+            $table->string('location')->nullable();
+            $table->enum('gerden', ['male','female','another'])->nullable();
             $table->enum('status', ['currently enrolled','dropped out','leave of absence'])->nullable();
             $table->enum('title', ['lecturer','associate professor','professor'])->nullable();
             $table->timestamp('email_verified_at')->nullable();

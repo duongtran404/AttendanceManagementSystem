@@ -10,20 +10,18 @@
               </svg>
         </a>
     </form>
-    <div>
+    <div class="">
         <table class="table">
-            <tr>
+            <tr class="text-center">
                 <th>Teacher</th>
                 <th>Subject</th>
                 <th>Time Begin</th>
                 <th>Location</th>
                 <th>Created at</th>
-                <th></th>
-                <th>Option</th>
-                <th></th>
+                <th>Action</th>
             </tr>
             @foreach ($lessons as $item)
-                <tr>
+                <tr class="text-center">
                     <td>{{ $item->class->user->name }}</td>
                     <td>{{ $item->class->class_subject->subject->name }}</td>
                     <td>{{ $item->begin_time }}</td>
@@ -31,20 +29,16 @@
                         {{ $item->location->address }}
                     </td>
                     <td>{{ $item->created_at->format('d/m/Y H:i:s') }}</td>
-                    <td>
-                        <a class="btn btn-primary" href="{{ route('editLesson', [$item->id]) }}"> Edit</a>
 
-                    </td>
                     <td>
                         <form action="{{ route('deleteLesson',[$item->id]) }}" method="POST">
                             @csrf
+                            <a class="btn btn-primary" href="{{ route('editLesson', [$item->id]) }}"> Edit</a>
+                            <a href="{{ route('attendance',[$item->id]) }}" class="btn btn-primary " role="button"
+                                aria-disabled="true">Attendance</a>
                             @method('DELETE')
                             <button class="btn btn-primary" type="submit">Delete</button>
                         </form>
-                    </td>
-                    <td>
-                        <a href="{{ route('attendance',[$item->id]) }}" class="btn btn-primary " role="button"
-                            aria-disabled="true">Attendance</a>
                     </td>
                 </tr>
             @endforeach

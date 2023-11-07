@@ -20,13 +20,10 @@ class CreateClassesTable extends Migration
             $table->date('end_date');
             $table->unsignedBigInteger('user_id');
             // $table->unsignedBigInteger('class_subject_id');
-            $table->softDeletes();
+            // $table->softDeletes();
             $table->timestamps();
             });
-        // Schema::table('classes', function(Blueprint $table){        
-        //     $table->foreign('user_id')->references('id')->on('users');
-        //     $table->foreign('class_subject_id')->references('id')->on('class_subjects');            
-        // });
+
     }
 
     /**

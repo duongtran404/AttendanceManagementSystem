@@ -14,19 +14,14 @@
     </div>
 
     <div class="form-group mt-3">
-        <label for="location" class="text-dark">Location: </label><br>
-        <input type="text" name="location" id="location" class="form-control" >
-        @error('location')
-            <span class="d-block fs-6 text-danger mt-2"> {{ $message }} </span>
-        @enderror
-    </div>
-
-    <div class="form-group mt-3">
-        <label for="address" class="text-dark">Address: </label><br>
-        <input type="text" name="address" id="address" class="form-control" >
-        @error('address')
-            <span class="d-block fs-6 text-danger mt-2"> {{ $message }} </span>
-        @enderror
+        <label for="gerden" class="text-dark">Location:</label><br>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="location">
+            <option selected>Open this select menu</option>
+            @foreach ($locations as $item)
+                {{-- <input type="hidden" name="address" value="{{ $item->address }}"> --}}
+                <option value="{{ $item->id }}">{{ $item->name }} {{ $item->address }}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="form-group">
