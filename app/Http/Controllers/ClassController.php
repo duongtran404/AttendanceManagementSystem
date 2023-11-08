@@ -24,7 +24,7 @@ class ClassController extends Controller
         return view("admin.class.viewClass",compact("class"));
     }
     public function indexReport(){
-        $class = Class_::with("class_subject","user")->get();
+        $class = Class_::with("class_subject","user")->paginate(10);
         // dd($class);
         return view("admin.class.viewClassReport",compact('class'));
     }
@@ -135,8 +135,8 @@ class ClassController extends Controller
         $class = Class_member::where('class_id',$id)->get();
         $allStudent = User::all()->where('role','student')->where('status','currently enrolled');
         $studentInClass = $class->pluck('user_id')->all();
-        $studentNotInClass = User::whereNotIn('id',$studentInClass)->where('role','student')->get();
-        return view('admin.class.add_member',compact('id','studentNotInClass'));
+        $studentNotInClass = User::whereNotIn('id',$studentInClass)->where('role','student')->paginate(10);
+        return view('admin.class.add_member',compact('id','studentNotInClass','class'));
     }
     public function add_member($id,Request $request){
         // dd($request->all());

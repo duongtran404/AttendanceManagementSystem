@@ -15,7 +15,9 @@ use function PHPUnit\Framework\returnSelf;
 class LessonController extends Controller
 {
     public function index($id){
-        $lessons = Lesson::with('location','class')->orderBy('begin_time','asc')->where('class_id','=', $id)->where('status','0')->get();
+        $lessons = Lesson::with('location','class')->orderBy('begin_time','asc')->where('class_id','=', $id)
+        ->where('status','0')
+        ->paginate(10);
         return view("admin.lesson.viewlesson",compact('lessons','id'));
     }
     public function create($id){
@@ -73,8 +75,9 @@ class LessonController extends Controller
         return redirect()->back()->with("success","delele compeleted");
     }
     public function archive($id){
+        $lesson = Lesson::where('class_id',$id)->first();
         $lessons = Lesson::onlyTrashed()->orderBy("deleted_at")->where('class_id','=', $id)->get();
-        return view("admin.lesson.archiveLesson",compact("lessons"));
+        return view("admin.lesson.archiveLesson",compact("lessons","lesson"));
     }
     public function hard_delete($id){
         $lesson = Lesson::onlyTrashed()->find($id);

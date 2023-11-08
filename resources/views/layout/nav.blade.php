@@ -18,8 +18,14 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('student') }}">Students</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('teacher') }}" aria-current="page" class="nav-link active">Teacher</a>
+                    </li>
                     <li class="nav_item">
                         <a class="nav-link active" aria-current="page" href="{{ route('class') }}">Class</a>
+                    </li>
+                    <li class="nav_item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('subject') }}">Subject</a>
                     </li>
                     {{-- <li class="nav_item">
                     <a class="nav-link active" aria-current="page" href="">Classes</a>

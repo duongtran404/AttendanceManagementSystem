@@ -49,7 +49,7 @@ class AuthController extends Controller
         ]);
 
 
-        return redirect()->route('login')->with('success','Register is successfully');
+        return redirect()->route('student')->with('success','Register is successfully');
     }
     public function login(){
         return view('admin.auth.login');

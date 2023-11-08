@@ -71,7 +71,7 @@ class StudentController extends Controller
         ]);
         return redirect()->route('student')->with('success','Update student is successfully');
     }
-    public function destroy(Request $request,$id){
+    public function destroy($id){
         $student = User::find($id);
         if($student){
             $student->delete();
@@ -98,7 +98,7 @@ class StudentController extends Controller
         // $student->history()->forceDelete();
         // return redirect()->route("archiveStudent")->with("success","hard delete is successfull");
     }
-    public function restore(Request $request,$id){
+    public function restore($id){
         $student = User::onlyTrashed()->find($id);
         if($student){
             $student->restore();

@@ -1,6 +1,9 @@
 @extends('layout.layout')
 
 @section('content')
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    {{ Breadcrumbs::render('attendance',$attendance->id) }}
+</nav>
     <form action="{{ route('markAttendance', [$attendance->id]) }}" method="post">
         @csrf
         <h1 class="text-center">Class {{ $attendance->class->name }}</h1>
@@ -8,7 +11,7 @@
         <h3 class="text-center">Attendance</h3>
         <div>
             <table class="table">
-                <tr>
+                <tr class="text-center">
                     <th>Student id</th>
                     <th>Name</th>
                     <th>Status</th>
@@ -16,7 +19,7 @@
                 </tr>
                 @foreach ($attendance->class->class_member as $item)
                     @if ($item->user->status == 'currently enrolled' && $item->user->deleted_at == null)
-                    <tr>
+                    <tr class="text-center">
                         <td>{{ $item->user->id }}</td>
                         <td>{{ $item->user->name }}</td>
                         <td>
@@ -45,7 +48,7 @@
                     @endforeach
             </table>
         </div>
-        <a class="btn btn-primary" href="{{ route('lesson',[$attendance->class->id]) }}">< Back</a>
+
         <button class="btn btn-primary" type="submit">save</button>
     </form>
 @endsection

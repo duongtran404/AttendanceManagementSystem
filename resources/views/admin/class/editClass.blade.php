@@ -34,7 +34,7 @@
 
     <div class="form-group mt-3">
         <label for="begin_date" class="text-dark">Begin date: </label><br>
-        <input type="date" name="begin_date" id="begin_date" class="form-control" value="{{ date('Y-d-m', strtotime($class->begin_date)) }}">
+        <input type="date" name="begin_date" id="begin_date" class="form-control" value="{{ date('Y-m-d', strtotime($class->begin_date)) }}">
         @error('begin_date')
             <span class="d-block fs-6 text-danger mt-2"> {{ $message }} </span>
         @enderror
@@ -42,14 +42,13 @@
 
     <div class="form-group mt-3">
         <label for="end_date" class="text-dark">End date: </label><br>
-        <input type="date" name="end_date" id="end_date" class="form-control" value="{{ date('Y-d-m', strtotime($class->end_date)) }}">
+        <input type="date" name="end_date" id="end_date" class="form-control" value="{{ date('Y-m-d', strtotime($class->end_date)) }}">
         @error('end_date')
             <span class="d-block fs-6 text-danger mt-2"> {{ $message }} </span>
         @enderror
     </div>
 
     <div class="form-group mt-3">
-        <a class="btn btn-primary" href="{{ route('class') }}">< Back</a>
         <label for="remember-me" class="text-dark"></label>
         <input type="submit" name="submit" class="btn btn-dark btn-md" value="Save">
         

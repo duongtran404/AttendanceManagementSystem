@@ -1,5 +1,8 @@
 @extends('layout.layout')
 @section('content')
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('statistical') }}
+    </nav>
     <html>
 
     <head>
@@ -40,7 +43,6 @@
 
     <body>
         <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
-        <a class="btn btn-primary" href="{{ route('student') }}">< Back</a>
     </body>
 
     </html>

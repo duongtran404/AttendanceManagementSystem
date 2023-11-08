@@ -21,14 +21,14 @@ class Class_ extends Model
 
     public function getDeletedAtAttribute($value)
     {
-        return Carbon::parse($value)->format('H:i:s d/m/Y');
+        return Carbon::parse($value)->format('H:i:s d-m-Y');
     }
     
     public function getBeginDateAttribute($begin_date){
-        return Carbon::parse($begin_date)->format('d/m/Y');
+        return Carbon::parse($begin_date)->format('d-m-Y');
     }
     public function getEndDateAttribute($end_date){
-        return Carbon::parse($end_date)->format('d/m/Y');
+        return Carbon::parse($end_date)->format('d-m-Y');
     }
 
     public function lesson(){
@@ -47,7 +47,4 @@ class Class_ extends Model
     {
         return $this->belongsTo(Users::class);
     }
-
-
-
 }

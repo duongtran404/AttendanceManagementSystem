@@ -3,6 +3,9 @@
     <h1>STUDENT MANAGEMENT</h1>
     @include('layout.success-message')
     @include('layout.error-message')
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('archive student') }}
+    </nav>
     <form class="d-flex " role="search" action="{{ route('student') }}" method="post">
         <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -57,6 +60,5 @@
     <div class="pagination">
         {{ $students->links() }}
     </div>
-    <a class="btn btn-primary" href="{{ route('student') }}">< Back</a>
 
 @endsection

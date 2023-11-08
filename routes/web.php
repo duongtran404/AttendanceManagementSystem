@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\lessonController;
 use App\Http\Controllers\StudentController;
-
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 
@@ -59,6 +60,28 @@ Route::get('/student/archive/restore/{id}',[StudentController::class,'restore'])
 Route::get('/student/search',[StudentController::class,'search'])->name('searchStudent');
 
 Route::get('/status-statistical',[StudentController::class,'status_statistical'])->name('status-statistical');
+
+
+
+
+Route::get('/teacher',[TeacherController::class,'index'])->name('teacher');
+
+Route::get('/teacher/create',[TeacherController::class,'create'])->name('createTeacher');
+
+Route::post('/teacher/create',[TeacherController::class,'store']);
+
+Route::get('/teacher/edit/{id}',[TeacherController::class,'edit'])->name('editTeacher');
+
+Route::post('/teacher/edit/{id}',[TeacherController::class,'update']);
+
+Route::delete('/teacher/destroy/{id}',[TeacherController::class,'destroy'])->name('deleteTeacher');
+
+Route::get('/teacher/archive',[TeacherController::class,'archive'])->name('archiveTeacher');
+
+Route::delete('/teacher/archive/delete/{id}',[TeacherController::class,'hard_delete'])->name('hard-delete-teacher');
+
+Route::get('/teacher/archive/restore/{id}',[TeacherController::class,'restore'])->name('restore-teacher');
+
 
 
 
@@ -132,6 +155,20 @@ Route::get('/class/member/add/{id}',[ClassController::class,'showStudent'])->nam
 Route::post('/class/member/add-member/{id}',[ClassController::class,'add_member'])->name('add-member');
 
 Route::delete('/class/member/delete/{id}',[ClassController::class,'delete_member'])->name('deleteMember');
+
+
+
+Route::get('/subject',[SubjectController::class,'index'])->name('subject');
+
+Route::get('/subject/create',[SubjectController::class,'create'])->name('createSubject');
+
+Route::post('/subject/create',[SubjectController::class,'store']);
+
+Route::get('/subject/edit/{id}',[SubjectController::class,'edit'])->name('editSubject');
+
+Route::post('/subject/edit/{id}',[SubjectController::class,'update']);
+
+Route::delete('/subject/delete/{id}',[SubjectController::class,'destroy'])->name('deleteSubject');
 
 
 // Route::prefix('admin')->group(function () {

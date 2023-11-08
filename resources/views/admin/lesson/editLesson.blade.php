@@ -1,5 +1,8 @@
 @extends('layout.layout')
 @section('content')
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    {{ Breadcrumbs::render('edit lesson',$lessons->id) }}
+</nav>
     <form class="form mt-5" action="{{ route('updateLesson', [$lessons->id]) }}" method="post">
         @csrf
         <h1 class="text-center text-dark">{{ $lessons->class->name }}</h1>

@@ -2,6 +2,10 @@
 @section('content')
     @include('layout.success-message')
     @include('layout.error-message')
+
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('student') }}
+    </nav>
     <h1>STUDENT MANAGEMENT</h1>
     <form class="d-flex " role="search" action="{{ route('searchStudent') }}" method="get">
         @csrf

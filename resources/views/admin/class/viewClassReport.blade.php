@@ -1,5 +1,8 @@
 @extends('layout.layout')
 @section('content')
+
+@include('layout.success-message')
+@include('layout.error-message')
     <h1>ATTENDANCE REPORT</h1>
     <form class="d-flex " role="search" action="{{ route('searchClass') }}" method="get">
         @csrf
@@ -9,7 +12,7 @@
     <form action="">
         <div>
             <table class="table">
-                <tr>
+                <tr class="text-center">
                     <th>Class name</th>
                     <th>Subject</th>
                     <th>Teacher</th>
@@ -18,7 +21,7 @@
                     <th>Option</th>
                 </tr>
                 @foreach ($class as $item)
-                    <tr>
+                    <tr class="text-center">
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->class_subject->subject->name }}</td>
                         <td>{{ $item->user->name }}</td>
@@ -26,10 +29,7 @@
                         <td>{{ $item->end_date }}</td>
 
                         <td>
-                            {{-- <a class="btn btn-primary" href="{{ route('createLesson', [$item->id]) }}">new lesson</a> --}}
-                            {{-- <a class="btn btn-primary" href="{{ route('editLesson', [$item->id]) }}"> Edit</a> --}}
-                            {{-- <a class="btn btn-primary" href="">Delete</a> --}}
-                            <a class="btn btn-primary" href="{{ route('lessonReport',[$item->id]) }}">About</a>
+                            <a class="btn btn-primary" href="{{ route('lessonReport',[$item->id]) }}">List Attendanced</a>
                             <a class="btn btn-primary" href="{{ route('attendance-statistical',[$item->id]) }}">Attendance statistical</a>
                             <a class="btn btn-primary" href="{{ route('attendance-record',[$item->id]) }}">Attendance record</a>
                         </td>
@@ -37,6 +37,9 @@
                     </tr>
                 @endforeach
             </table>
+        </div>
+        <div class="pagination">
+            {{ $class->links() }}
         </div>
     </form>
 @endsection

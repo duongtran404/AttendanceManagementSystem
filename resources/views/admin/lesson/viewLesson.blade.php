@@ -1,5 +1,8 @@
 @extends('layout.layout')
 @section('content')
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    {{ Breadcrumbs::render('schedule',$id) }}
+</nav>
     <h1></h1>
     <form class="d-flex " role="search" action="" method="">
         <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
@@ -37,12 +40,15 @@
                             <a href="{{ route('attendance',[$item->id]) }}" class="btn btn-primary " role="button"
                                 aria-disabled="true">Attendance</a>
                             @method('DELETE')
-                            <button class="btn btn-primary" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
             @endforeach
 
         </table>
+    </div>
+    <div>
+        {{ $lessons->links() }}
     </div>
 @endsection

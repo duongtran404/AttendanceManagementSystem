@@ -1,5 +1,8 @@
 @extends('layout.layout')
 @section('content')
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    {{ Breadcrumbs::render('archive lesson',$lesson->id) }}
+</nav>
 <h1></h1>
 <form class="d-flex " role="search" action="" method="">
     <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
@@ -28,14 +31,9 @@
                 <td>
                     <form action="{{ route('hard-delete-lesson', [$item->id]) }}" method="POST">
                         @csrf
+                        <a class="btn btn-primary" href="{{ route('restore-lesson', [$item->id]) }}">Restore</a>
                         @method('DELETE')
-                        <button class="btn btn-primary mt-1" type="submit">delete</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="{{ route('restore-lesson', [$item->id]) }}" method="GET">
-                        @csrf
-                        <button class="btn btn-primary mt-1" type="submit">Restore</button>
+                        <button class="btn btn-danger" type="submit">Delete</button>
                     </form>
                 </td>
             </tr>

@@ -1,5 +1,6 @@
 @extends('layout.layout')
 @section('content')
+
     <h1 class="text-center">Class {{ $lesson->class->name }}</h1>
     <div>
         <table class="table">

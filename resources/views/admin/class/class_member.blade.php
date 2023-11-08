@@ -1,5 +1,8 @@
 @extends('layout.layout')
 @section('content')
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    {{ Breadcrumbs::render('class member',$class->id) }}
+</nav>
     <h1 class="text-center">{{ $class->name }}</h1>
     <a class="btn btn-primary mb-3" href="{{ route('student-list',[$id]) }}">Add student to list</a>
     <div>

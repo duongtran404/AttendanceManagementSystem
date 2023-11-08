@@ -1,12 +1,16 @@
 @extends('layout.layout')
 
 @section('content')
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    {{ Breadcrumbs::render('edit student',[$students->id]) }}
+</nav>
     <form class="form mt-5" action="{{ route('updateStudent', [$students->id]) }}" method="post">
         @method('post')
         @csrf
         <h3 class="text-center text-dark">Edit student</h3>
         <div class="form-group">
-            <label for="id" class="text-dark">Student id: {{ $students->id }}</label><br>
+            <label for="id" class="text-dark">Student id: </label><br>
+            <input type="text" name="name" id="name" class="form-control" value="{{ $students->id }}" disabled>
         </div>
         <div class="form-group mt-3">
             <label for="name" class="text-dark">Name: </label><br>
@@ -58,8 +62,6 @@
                 <span class="d-block fs-6 text-danger mt-2"> {{ $message }} </span>
             @enderror
         </div>
-
-        <a class="btn btn-primary" href="{{ route('student') }}">< Back</a>
 
             <button class="btn btn-primary" type="submit">Save</button>
 

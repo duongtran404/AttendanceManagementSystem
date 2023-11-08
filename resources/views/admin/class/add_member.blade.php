@@ -1,5 +1,8 @@
 @extends('layout.layout')
 @section('content')
+{{-- <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    {{ Breadcrumbs::render('add member',$class->id) }}
+</nav> --}}
 <div>
     <table class="table">
         <tr class="text-center">
@@ -26,7 +29,7 @@
         @endforeach
     </table>
 </div>
-{{-- <div class="pagination">
-    {{ $members->links() }}
-</div> --}}
+<div class="pagination">
+    {{ $studentNotInClass->links() }}
+</div>
 @endsection
