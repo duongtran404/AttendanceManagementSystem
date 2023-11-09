@@ -94,7 +94,7 @@ class ClassController extends Controller
     public function destroy($id){
         $class = Class_::find($id);
         $class->delete();
-        return redirect()->route('class')->with('success','delete is successfully');
+        return redirect()->route('class')->with('success','Class have moved into the trash');
     }
     public function archiveClass(){
         $class = Class_::onlyTrashed()->orderBy("deleted_at")->get();
@@ -162,5 +162,26 @@ class ClassController extends Controller
     public function delete_member($id){
         Class_member::find($id)->delete();
         return redirect()->back()->with('success','');
+    }
+    // public function search_member(Request $request, $id){
+    //     $class = Class_::findOrFail($id);
+    //     $query = Class_member::where('class_id', $class->id);
+    //     if ($request->has('name')) {
+    //         $query->whereHas('users', function ($query) use ($request) {
+    //             $query->where('name', 'like', '%' . $request->input('search') . '%')->where('role','student');
+    //         });
+    //     }
+    
+    //     $members = $query->paginate(10);
+    
+    //     return view('admin.class.class_member', compact('members','class'));
+    // }
+    public function searchMemberNotInClass(Request $request, $id){
+        $class = Class_::where('id',$id)->first();
+        $class_member = Class_member::where('class_id',$id)->get();
+        $allStudent = User::all()->where('role','student')->where('status','currently enrolled');
+        $studentInClass = $class_member->pluck('user_id')->all();
+        $studentNotInClass = User::whereNotIn('id',$studentInClass)->where('role','student')->where('name','like','%'.$request->input('search').'%')->paginate(10);
+        return view('admin.class.add_member',compact('id','studentNotInClass','class'));
     }
 }

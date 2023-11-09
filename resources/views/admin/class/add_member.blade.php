@@ -4,6 +4,11 @@
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     {{ Breadcrumbs::render('add member',$class->id) }}
 </nav>
+<form class="d-flex " role="search" action="{{ route('searchMemberNotInClass',[$class->id])}}" method="get">
+    @csrf
+    <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">
+    <button class="btn btn-outline-success me-1" type="submit">Search</button>
+</form>
 <div>
     <table class="table">
         <tr class="text-center">

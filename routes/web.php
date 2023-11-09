@@ -132,7 +132,6 @@ Route::get('/class',[ClassController::class,'index'])->name('class');
 
 Route::get('/class/search',[ClassController::class,'searchClass'])->name('searchClass');
 
-
 Route::get('/class/search-report',[ClassController::class,'searchClassReport'])->name('searchClassReport');
 
 Route::get('/class/create',[ClassController::class,'create'])->name('createClass');
@@ -152,6 +151,10 @@ Route::delete('/class/archive/delete/{id}',[ClassController::class,'hard_delete'
 Route::get('/class/archive/restore/{id}',[ClassController::class,'restore'])->name('restore-class');
 
 Route::get('/class/member/{id}',[ClassController::class,'showClassMember'])->name('class_member');
+
+// Route::get('/class/member/search/{id}',[ClassController::class,'search_member'])->name('searchMember');
+
+Route::get('/class/member/add-member/search/{id}',[ClassController::class,'searchMemberNotInClass'])->name('searchMemberNotInClass');
 
 Route::get('/class/member/add/{id}',[ClassController::class,'showStudent'])->name('student-list');
 

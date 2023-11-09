@@ -4,7 +4,12 @@
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     {{ Breadcrumbs::render('class member',$class->id) }}
 </nav>
-    <a class="btn btn-primary mb-3" href="{{ route('student-list',[$id]) }}">Add student to list</a>
+<form class="d-flex " role="search" action="{{-- route('searchMember',[$id]) --}}" method="get">
+    @csrf
+    <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">
+    <button class="btn btn-outline-success me-1" type="submit">Search</button>
+</form>
+    <a class="btn btn-primary mb-3 mt-3" href="{{ route('student-list',[$id]) }}">Add student to list</a>
     <div>
         <table class="table">
             <tr class="text-center">

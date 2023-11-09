@@ -75,7 +75,7 @@ class StudentController extends Controller
         $student = User::find($id);
         if($student){
             $student->delete();
-            return redirect()->back()->with('success','delete is successfully');
+            return redirect()->back()->with('success','Student have moved into the trash');
         }else{
             return redirect()->back()->with('error','not found');
         }

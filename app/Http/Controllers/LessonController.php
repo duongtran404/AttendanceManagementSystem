@@ -72,7 +72,7 @@ class LessonController extends Controller
     public function destroy($id){
         $lesson = Lesson::find($id);
         $lesson->delete();
-        return redirect()->back()->with("success","delele compeleted");
+        return redirect()->back()->with("success","Lesson have moved into the trash");
     }
     public function archive($id){
         $lesson = Lesson::where('class_id',$id)->first();
