@@ -1,12 +1,12 @@
 @extends('layout.layout')
 
 @section('content')
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-    {{ Breadcrumbs::render('new teacher') }}
-</nav>
+    <h1 class="text-center text-dark">New teacher</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('new teacher') }}
+    </nav>
     <form class="form mt-5" action="{{ route('createTeacher') }}" method="post">
         @csrf
-        <h3 class="text-center text-dark">New teacher</h3>
         <div class="form-group mt-3">
             <label for="name" class="text-dark">Name(*) : </label><br>
             <input type="text" name="name" id="name" class="form-control">

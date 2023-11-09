@@ -1,15 +1,16 @@
 @extends('layout.layout')
 @section('content')
-@include('layout.success-message')
-@include('layout.error-message')
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-    {{ Breadcrumbs::render('archive teacher') }}
-</nav>
-<form class="d-flex " role="search" action="{{ route('searchStudent') }}" method="get">
-    @csrf
-    <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-    {{-- <a class="btn btn-primary" href="{{ route('archiveTeacher') }}">
+    @include('layout.success-message')
+    @include('layout.error-message')
+    <h1 class="text-center">Archive Teacher</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('archive teacher') }}
+    </nav>
+    <form class="d-flex " role="search" action="{{ route('searchStudent') }}" method="get">
+        @csrf
+        <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+        {{-- <a class="btn btn-primary" href="{{ route('archiveTeacher') }}">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-archive-fill" viewBox="0 0 16 16">
             <path
@@ -17,41 +18,41 @@
         </svg>
     </a> --}}
 
-</form>
-<div>
-    <table class="table">
-        <tr class="text-center">
-            <th>Id</th>
-            <th>Name</th>
-            <th>Gerden</th>
-            <th>Phone number</th>
-            <th>Email</th>
-            <th>Location</th>
-            <th>Notes</th>
-            <th>Action</th>
-        </tr>
-        @foreach ($teachers as $item)
+    </form>
+    <div>
+        <table class="table">
             <tr class="text-center">
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->gerden }}</td>
-                <td>0{{ $item->phone_number }}</td>
-                <td>{{ $item->email }}</td>
-                <td>{{ $item->location }}</td>
-                <td>{{ $item->notes }}</td>
-                <td>
-                    <form action="{{ route('hard-delete-teacher', [$item->id]) }}" method="POST">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gerden</th>
+                <th>Phone number</th>
+                <th>Email</th>
+                <th>Location</th>
+                <th>Notes</th>
+                <th>Action</th>
+            </tr>
+            @foreach ($teachers as $item)
+                <tr class="text-center">
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->gerden }}</td>
+                    <td>0{{ $item->phone_number }}</td>
+                    <td>{{ $item->email }}</td>
+                    <td>{{ $item->location }}</td>
+                    <td>{{ $item->notes }}</td>
+                    <td>
+                        <form action="{{ route('hard-delete-teacher', [$item->id]) }}" method="POST">
                             @csrf
                             <a class="btn btn-primary" href="{{ route('restore-teacher', [$item->id]) }}">Restore</a>
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                     </td>
-            </tr>
-        @endforeach
-    </table>
-    <div class="pagination">
-        {{ $teachers->links() }}
+                </tr>
+            @endforeach
+        </table>
+        <div class="pagination">
+            {{ $teachers->links() }}
+        </div>
     </div>
-</div>
 @endsection

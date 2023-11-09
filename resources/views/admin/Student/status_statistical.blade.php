@@ -1,5 +1,6 @@
 @extends('layout.layout')
 @section('content')
+    <h1 class="text-center">Status statistical</h1>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         {{ Breadcrumbs::render('statistical') }}
     </nav>

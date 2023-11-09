@@ -132,9 +132,10 @@ class ClassController extends Controller
         return view('admin.class.class_member',compact('id','members','class'));
     }
     public function showStudent($id){
-        $class = Class_member::where('class_id',$id)->get();
+        $class = Class_::where('id',$id)->first();
+        $class_member = Class_member::where('class_id',$id)->get();
         $allStudent = User::all()->where('role','student')->where('status','currently enrolled');
-        $studentInClass = $class->pluck('user_id')->all();
+        $studentInClass = $class_member->pluck('user_id')->all();
         $studentNotInClass = User::whereNotIn('id',$studentInClass)->where('role','student')->paginate(10);
         return view('admin.class.add_member',compact('id','studentNotInClass','class'));
     }

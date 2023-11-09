@@ -1,9 +1,12 @@
 @extends('layout.layout')
 
 @section('content')
-    <form class="form mt-5" action="{{ route('editSubject',[$subject->id]) }}" method="post">
+    <h1 class="text-center">Edit subject</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('edit subject', $subject->id) }}
+    </nav>
+    <form class="form mt-5" action="{{ route('editSubject', [$subject->id]) }}" method="post">
         @csrf
-        <h3 class="text-center text-dark">Edit subject</h3>
         <div class="form-group mt-3">
             <label for="name" class="text-dark">Name(*) : </label><br>
             <input type="text" name="name" id="name" class="form-control" value="{{ $subject->name }}">
@@ -30,7 +33,7 @@
 
         <div class="form-group">
             <label for="remember-me" class="text-dark"></label><br>
-            <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">
+            <input type="submit" name="submit" class="btn btn-dark btn-md" value="Save">
         </div>
     </form>
 @endsection

@@ -1,14 +1,14 @@
 @extends('layout.layout')
 
 @section('content')
+<h1 class="text-center">Attendance</h1>
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     {{ Breadcrumbs::render('attendance',$attendance->id) }}
 </nav>
     <form action="{{ route('markAttendance', [$attendance->id]) }}" method="post">
         @csrf
-        <h1 class="text-center">Class {{ $attendance->class->name }}</h1>
-        <h2 class="text-center">Begin time {{ $attendance->begin_time }}</h2>
-        <h3 class="text-center">Attendance</h3>
+        <h2 class="text-center">{{ $attendance->class->name }}</h2>
+        <h3 class="text-center">Begin time: {{ $attendance->begin_time }}</h3>
         <div>
             <table class="table">
                 <tr class="text-center">
@@ -49,6 +49,6 @@
             </table>
         </div>
 
-        <button class="btn btn-primary" type="submit">save</button>
+        <button class="btn btn-dark" type="submit">Save</button>
     </form>
 @endsection

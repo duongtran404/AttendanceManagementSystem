@@ -1,8 +1,9 @@
 @extends('layout.layout')
 @section('content')
-{{-- <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+<h1 class="text-center">Add member</h1>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     {{ Breadcrumbs::render('add member',$class->id) }}
-</nav> --}}
+</nav>
 <div>
     <table class="table">
         <tr class="text-center">

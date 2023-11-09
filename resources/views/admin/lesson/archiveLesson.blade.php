@@ -1,9 +1,9 @@
 @extends('layout.layout')
 @section('content')
+<h1 class="text-center">Archive lesson</h1>
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     {{ Breadcrumbs::render('archive lesson',$lesson->id) }}
 </nav>
-<h1></h1>
 <form class="d-flex " role="search" action="" method="">
     <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>

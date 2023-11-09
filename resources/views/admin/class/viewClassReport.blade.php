@@ -3,7 +3,10 @@
 
 @include('layout.success-message')
 @include('layout.error-message')
-    <h1>ATTENDANCE REPORT</h1>
+    <h1 class="text-center">ATTENDANCE REPORT</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('attendance report') }}
+    </nav>
     <form class="d-flex " role="search" action="{{ route('searchClass') }}" method="get">
         @csrf
         <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">

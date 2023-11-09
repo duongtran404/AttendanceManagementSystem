@@ -1,6 +1,9 @@
 @extends('layout.layout')
 @section('content')
-    <h1></h1>
+    <h1 class="text-center">View Took Attendance</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('attendance list',$id) }}
+    </nav>
     <form class="d-flex " role="search" action="" method="">
         <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

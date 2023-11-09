@@ -1,10 +1,13 @@
 @extends('layout.layout')
 
 @section('content')
-    
+    <h1 class="text-center">New subject</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('new subject') }}
+    </nav>
+
     <form class="form mt-5" action="{{ route('createSubject') }}" method="post">
         @csrf
-        <h3 class="text-center text-dark">New subject</h3>
         <div class="form-group mt-3">
             <label for="name" class="text-dark">Name(*) : </label><br>
             <input type="text" name="name" id="name" class="form-control">

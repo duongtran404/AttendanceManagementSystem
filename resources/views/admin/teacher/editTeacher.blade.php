@@ -1,12 +1,12 @@
 @extends('layout.layout')
 
 @section('content')
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-    {{ Breadcrumbs::render('edit teacher',[$teacher->id]) }}
-</nav>
-    <form class="form mt-5" action="{{ route('editTeacher',[$teacher->id]) }}" method="post">
+    <h1 class="text-center text-dark">Edit teacher</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('edit teacher', [$teacher->id]) }}
+    </nav>
+    <form class="form mt-5" action="{{ route('editTeacher', [$teacher->id]) }}" method="post">
         @csrf
-        <h3 class="text-center text-dark">Edit teacher</h3>
         <div class="form-group mt-3">
             <label for="name" class="text-dark">Name(*) : </label><br>
             <input type="text" name="name" id="name" class="form-control" value="{{ $teacher->name }}">
@@ -32,7 +32,8 @@
 
         <div class="form-group mt-3">
             <label for="location" class="text-dark">Phone number :</label><br>
-            <input type="text" name="phone_number" id="phone_nmber" class="form-control" value="{{ $teacher->phone_number }}">
+            <input type="text" name="phone_number" id="phone_nmber" class="form-control"
+                value="{{ $teacher->phone_number }}">
             @error('phone_number')
                 <span class="d-block fs-6 text-danger mt-2"> {{ $message }} </span>
             @enderror
@@ -56,7 +57,7 @@
 
         <div class="form-group">
             <label for="remember-me" class="text-dark"></label><br>
-            <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">
+            <input type="submit" name="submit" class="btn btn-dark btn-md" value="Save">
         </div>
     </form>
 @endsection

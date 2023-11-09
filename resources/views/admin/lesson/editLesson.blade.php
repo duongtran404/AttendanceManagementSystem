@@ -1,12 +1,12 @@
 @extends('layout.layout')
 @section('content')
+<h1 class="text-center text-dark">{{ $lessons->class->name }}</h1>
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     {{ Breadcrumbs::render('edit lesson',$lessons->id) }}
 </nav>
     <form class="form mt-5" action="{{ route('updateLesson', [$lessons->id]) }}" method="post">
         @csrf
-        <h1 class="text-center text-dark">{{ $lessons->class->name }}</h1>
-        <h3 class="text-center text-dark">{{ $lessons->class->class_subject->subject->name }}</h3>
+        {{-- <h3 class="text-center text-dark">{{ $lessons->class->class_subject->subject->name }}</h3> --}}
         <div class="form-group mt-3">
             <label for="begin_time" class="text-dark">Begin time: </label><br>
             <input type="datetime-local" name="begin_time" id="begin_time" class="form-control" value="{{ date('Y-d-m H:i:s', strtotime($lessons->begin_time)) }}">
@@ -33,7 +33,7 @@
 
         <div class="form-group">
             <label for="remember-me" class="text-dark"></label><br>
-            <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">
+            <input type="submit" name="submit" class="btn btn-dark btn-md" value="Save">
         </div>
     </form>
 @endsection

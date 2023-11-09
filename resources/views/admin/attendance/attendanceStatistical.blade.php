@@ -2,6 +2,9 @@
 @section('content')
 
     <h1 class="text-center">Class {{ $lesson->class->name }}</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('attendance statistical',$lesson->class_id) }}
+    </nav>
     <div>
         <table class="table">
             <tr>

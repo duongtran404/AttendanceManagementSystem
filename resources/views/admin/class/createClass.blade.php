@@ -1,8 +1,11 @@
 @extends('layout.layout')
 @section('content')
+    <h1 class="text-center text-dark">New Class</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('new class') }}
+    </nav>
     <form class="form mt-5" action="{{ route('createClass') }}" method="post">
         @csrf
-        <h3 class="text-center text-dark">New Class</h3>
 
         <div class="form-group mt-3">
             <label for="name" class="text-dark">Class Name: </label><br>
@@ -50,7 +53,7 @@
 
         <div class="form-group">
             <label for="remember-me" class="text-dark"></label><br>
-            <input type="submit" name="submit" class="btn btn-dark btn-md" value="Save">
+            <input type="submit" name="submit" class="btn btn-dark btn-md" value="Submit">
         </div>
 
     </form>

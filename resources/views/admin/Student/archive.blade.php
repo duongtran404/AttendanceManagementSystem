@@ -1,8 +1,8 @@
 @extends('layout.layout')
 @section('content')
-    <h1>STUDENT MANAGEMENT</h1>
     @include('layout.success-message')
     @include('layout.error-message')
+    <h1 class="text-center">Archive student</h1>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         {{ Breadcrumbs::render('archive student') }}
     </nav>
@@ -14,7 +14,7 @@
 
     <div>
         <table class="table">
-            <tr>
+            <tr class="text-center">
                 {{-- <th>##</th> --}}
                 <th>Student id</th>
                 <th>Name</th>
@@ -26,10 +26,9 @@
                 <th>Notes</th>
                 <th>Delete at</th>
                 <th>Action</th>
-                <th></th>
             </tr>
             @foreach ($students as $item)
-                <tr>
+                <tr class="text-center">
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->gerden }}</td>
@@ -42,15 +41,9 @@
                     <td>
                         <form action="{{ route('hard-delete-student', [$item->id]) }}" method="POST">
                             @csrf
+                            <a class="btn btn-primary" href="{{ route('restore-student', [$item->id]) }}">Restore</a>
                             @method('DELETE')
-                            <button class="btn btn-primary mt-1" type="submit">delete</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{{ route('restore-student', [$item->id]) }}" method="GET">
-                            @csrf
-                            {{-- @method('DELETE') --}}
-                            <button class="btn btn-primary mt-1" type="submit">Restore</button>
+                            <button class="btn btn-danger " type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -60,5 +53,4 @@
     <div class="pagination">
         {{ $students->links() }}
     </div>
-
 @endsection

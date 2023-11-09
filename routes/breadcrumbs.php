@@ -85,8 +85,40 @@ use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
         $trial->parent('class');
         $trial->push('Class member', route('class_member',$id));
     });
-    // Breadcrumbs::for('add member', function ($trial,$id) {
-    //     $lesson = Lesson::findOrFail($id);
-    //     $trial->parent('class member', $lesson->class_id );
-    //     $trial->push('Add member', route('student-list',$id));
-    // });
+    Breadcrumbs::for('add member', function ($trial,$id) {
+        $class = Class_::findOrFail($id);
+        $trial->parent('class member', $class->id );
+        $trial->push('Add member', route('student-list',$id));
+    });
+
+    //Subject
+    Breadcrumbs::for('subject', function ($trial) {
+        $trial->push('Subject', route('subject'));
+    });
+    Breadcrumbs::for('new subject', function ($trial) {
+        $trial->parent('subject');
+        $trial->push('New Subject', route('createSubject'));
+    });
+    Breadcrumbs::for('edit subject', function ($trial,$id) {
+        $trial->parent('subject');
+        $trial->push('Edit subject', route('editSubject',$id));
+    });
+
+    //attendance report
+    Breadcrumbs::for('attendance report', function ($trial) {
+        // $trial->parent('');
+        $trial->push('Attendance report', route('classReport'));
+    });
+    Breadcrumbs::for('attendance list', function ($trial,$id) {
+        $trial->parent('attendance report');
+        $trial->push('Attendance list', route('lessonReport',$id));
+    });
+    Breadcrumbs::for('view attendance', function ($trial,$id) {
+        $class = Class_::findOrFail($id);
+        $trial->parent('attendance list',$class->id);
+        $trial->push('View Attendance', route('viewAttendance',$id));
+    });
+    Breadcrumbs::for('attendance statistical', function ($trial,$id) {
+        $trial->parent('attendance report');
+        $trial->push('Attendance statistical', route('attendance-statistical',$id));
+    });

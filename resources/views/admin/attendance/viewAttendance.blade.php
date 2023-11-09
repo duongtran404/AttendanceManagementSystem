@@ -4,8 +4,10 @@
     {{-- <form action="{{ route('markAttendance', [$attendance->id]) }}" method="post">
         @csrf --}}
     <h1 class="text-center">Class {{ $lesson->class->name }}</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('view attendance',$lesson->class->id) }}
+    </nav>
     <h2 class="text-center">Begin time {{ $lesson->begin_time }}</h2>
-    <h3 class="text-center">Attendance</h3>
     <div>
         <table class="table">
             <tr class="text-center">

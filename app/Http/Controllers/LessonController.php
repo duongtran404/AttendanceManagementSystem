@@ -99,6 +99,7 @@ class LessonController extends Controller
         }
     }
     public function indexReport($id){
+        $class = Class_::find($id);
         $lessons = Lesson::with('location','class')->orderBy('begin_time','asc')->where('class_id','=', $id)->where('status','1')->get();
         return view("admin.lesson.viewLessonReport",compact('lessons','id'));
     }

@@ -3,11 +3,11 @@
 @section('content')
 @include('layout.success-message')
 @include('layout.error-message')
+<h1 class="text-center">TEACHER MANAGEMENT</h1>
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     {{ Breadcrumbs::render('teacher') }}
 </nav>
-<h1>TEACHER MANAGEMENT</h1>
-<form class="d-flex " role="search" action="{{ route('searchStudent') }}" method="get">
+<form class="d-flex " role="search" action="#" method="get">
     @csrf
     <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">
     <button class="btn btn-outline-success" type="submit">Search</button>

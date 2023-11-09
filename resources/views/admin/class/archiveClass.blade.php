@@ -1,13 +1,17 @@
 @extends('layout.layout')
 
 @section('content')
-@include('layout.success-message')
-<h1>CLASS ARCHIVE</h1>
-<form class="d-flex " role="search" action="{{ route('searchClass') }}" method="get">
-    @csrf
-    <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-</form>
+    @include('layout.success-message')
+    @include('layout.error-message')
+    <h1 class="text-center">CLASS ARCHIVE</h1>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{ Breadcrumbs::render('archive class') }}
+    </nav>
+    <form class="d-flex " role="search" action="{{ route('searchClass') }}" method="get">
+        @csrf
+        <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
 
     <div>
         <table class="table">
@@ -30,9 +34,9 @@
                     <td>{{ $item->deleted_at }}</td>
 
                     <td>
-                        <form action="{{ route('hard-delete-class',[$item->id]) }}" method="post">
+                        <form action="{{ route('hard-delete-class', [$item->id]) }}" method="post">
                             @csrf
-                            <a class="btn btn-primary" href="{{ route('restore-class',[$item->id]) }}">Restore</a>
+                            <a class="btn btn-primary" href="{{ route('restore-class', [$item->id]) }}">Restore</a>
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
