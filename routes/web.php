@@ -132,6 +132,9 @@ Route::get('/class',[ClassController::class,'index'])->name('class');
 
 Route::get('/class/search',[ClassController::class,'searchClass'])->name('searchClass');
 
+
+Route::get('/class/search-report',[ClassController::class,'searchClassReport'])->name('searchClassReport');
+
 Route::get('/class/create',[ClassController::class,'create'])->name('createClass');
 
 Route::post('/class/create',[ClassController::class,'store']);

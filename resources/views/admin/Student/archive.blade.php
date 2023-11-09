@@ -8,7 +8,7 @@
     </nav>
     <form class="d-flex " role="search" action="{{ route('student') }}" method="post">
         <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success me-1" type="submit">Search</button>
     </form>
     {{-- <a href="{{ route('createStudent') }}" class="btn btn-primary mt-3" role="button" aria-disabled="true">New student</a> --}}
 

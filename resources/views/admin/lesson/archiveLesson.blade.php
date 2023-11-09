@@ -6,7 +6,7 @@
 </nav>
 <form class="d-flex " role="search" action="" method="">
     <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <button class="btn btn-outline-success me-1" type="submit">Search</button>
 </form>
 <div>
     <table class="table">

@@ -7,10 +7,10 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         {{ Breadcrumbs::render('attendance report') }}
     </nav>
-    <form class="d-flex " role="search" action="{{ route('searchClass') }}" method="get">
+    <form class="d-flex " role="search" action="{{ route('searchClassReport') }}" method="get">
         @csrf
-        <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-1" type="Search" placeholder="Search" aria-label="Search" name="search" value="{{ $search }}">
+        <button class="btn btn-outline-success me-1" type="submit">Search</button>
     </form>
     <form action="">
         <div>

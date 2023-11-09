@@ -18,15 +18,15 @@ use Carbon\Carbon;
 class ClassController extends Controller
 {
     //
-    public function index(){
+    public function index($search = null){
         $class = Class_::with('class_subject','user')->get();
         // dd($class);
-        return view("admin.class.viewClass",compact("class"));
+        return view("admin.class.viewClass",compact("class","search"));
     }
-    public function indexReport(){
+    public function indexReport($search = null){
         $class = Class_::with("class_subject","user")->paginate(10);
         // dd($class);
-        return view("admin.class.viewClassReport",compact('class'));
+        return view("admin.class.viewClassReport",compact('class','search'));
     }
     public function create(){
         $subjects = Subject::all();
@@ -119,11 +119,22 @@ class ClassController extends Controller
             return redirect()->route('class')->with('error','not found');
         }
     }
-
     public function searchClass(Request $request){
         $search = $request->input('search');
-        $class = Class_::with("class_subject","user")->where('name', 'like', '%' . $search . '%')->get();
-        return view("admin.class.viewClassReport",compact('class'));
+        $class = Class_::with("class_subject","user")
+        ->where('name', 'like', '%' . $search . '%')
+        // ->orWhere('','like', '%' . $search . '%')
+        ->paginate(10);
+        return view("admin.class.viewClass",compact('class','search'));
+    }
+
+    public function searchClassReport(Request $request){
+        $search = $request->input('search');
+        $class = Class_::with("class_subject","user")
+        ->where('name', 'like', '%' . $search . '%')
+        // ->orWhere('','like', '%' . $search . '%')
+        ->paginate(10);
+        return view("admin.class.viewClassReport",compact('class','search'));
     }
     public function showClassMember($id){
         $members = Class_member::with('class','user')->where('class_id',$id)->paginate(10);

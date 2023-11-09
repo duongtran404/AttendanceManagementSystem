@@ -14,9 +14,9 @@ class StudentController extends Controller
     public function __construct(){
         $this->users = new User();
     }    
-    public function index(){
+    public function index($search = null){
         $students = DB::table('users')->where("role","student")->where('deleted_at',null)->paginate(10);
-        return view("admin.student.viewStudent",compact("students"));
+        return view("admin.student.viewStudent",compact("students","search"));
     }
     public function create(){
         return view("admin.student.createStudent");
@@ -110,8 +110,16 @@ class StudentController extends Controller
     }
     public function search(Request $request){
         $search = $request->input("search");
-        $students = Users::where('name', 'like', '%' . $search . '%')->get();
-        return view("admin.student.viewStudent",compact("students"));
+        $students = Users::where('role','=','student')
+        ->where('name', 'like', '%' . $search . '%')
+        ->orWhere('email', 'like', '%' . $search .'%')
+        ->where('role','=','student')
+        ->orWhere('phone_number', 'like', '%' . $search . '%')
+        ->where('role','=','student')
+        ->orWhere('location', 'like', '%' . $search . '%')
+        ->where('role','=','student')
+        ->paginate(10);
+        return view("admin.student.viewStudent",compact("students","search"));
     }
     public function status_statistical(){
         $currently_enrolled = User::where("status","currently enrolled")->count();
