@@ -166,7 +166,7 @@ class ClassController extends Controller
     // public function search_member(Request $request, $id){
     //     $class = Class_::findOrFail($id);
     //     $query = Class_member::where('class_id', $class->id);
-    //     if ($request->has('name')) {
+    //     if ($request->input('search')->has('name')) {
     //         $query->whereHas('users', function ($query) use ($request) {
     //             $query->where('name', 'like', '%' . $request->input('search') . '%')->where('role','student');
     //         });
